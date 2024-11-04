@@ -7,4 +7,4 @@ SearchProperties API successful response
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `results`                                                  | List[[models.ZillowProperty](../models/zillowproperty.md)] | :heavy_minus_sign:                                         | N/A                                                        |
+| `properties`                                               | List[[models.ZillowProperty](../models/zillowproperty.md)] | :heavy_minus_sign:                                         | N/A                                                        |

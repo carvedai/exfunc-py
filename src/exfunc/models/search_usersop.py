@@ -25,10 +25,10 @@ class SearchUsersRequestBody(BaseModel):
 class SearchUsersResponseBodyTypedDict(TypedDict):
     r"""SearchUsers API successful response"""
 
-    results: NotRequired[List[TwitterUserTypedDict]]
+    users: NotRequired[List[TwitterUserTypedDict]]
 
 
 class SearchUsersResponseBody(BaseModel):
     r"""SearchUsers API successful response"""
 
-    results: Optional[List[TwitterUser]] = None
+    users: Optional[List[TwitterUser]] = None

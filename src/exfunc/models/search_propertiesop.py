@@ -103,10 +103,10 @@ class SearchPropertiesRequestBody(BaseModel):
 class SearchPropertiesResponseBodyTypedDict(TypedDict):
     r"""SearchProperties API successful response"""
 
-    results: NotRequired[List[ZillowPropertyTypedDict]]
+    properties: NotRequired[List[ZillowPropertyTypedDict]]
 
 
 class SearchPropertiesResponseBody(BaseModel):
     r"""SearchProperties API successful response"""
 
-    results: Optional[List[ZillowProperty]] = None
+    properties: Optional[List[ZillowProperty]] = None

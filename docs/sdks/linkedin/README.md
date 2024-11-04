@@ -9,7 +9,7 @@
 * [get_job_posting](#get_job_posting) - Get LinkedIn job posting info
 * [get_person](#get_person) - Get LinkedIn person profile info
 * [search_companies](#search_companies) - Search for LinkedIn companies
-* [search_jobs](#search_jobs) - Search for LinkedIn job postings
+* [search_job_postings](#search_job_postings) - Search for LinkedIn job postings
 * [search_people](#search_people) - Search for LinkedIn people
 
 ## get_company
@@ -182,7 +182,7 @@ if res is not None:
 | models.ServerError | 500                | application/json   |
 | models.SDKError    | 4XX, 5XX           | \*/\*              |
 
-## search_jobs
+## search_job_postings
 
 Search for job postings on LinkedIn for a given keywords, location, and other criteria
 
@@ -196,7 +196,7 @@ s = Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
 )
 
-res = s.linkedin.search_jobs(request={
+res = s.linkedin.search_job_postings(request={
     "keywords": "<value>",
     "location": "<value>",
 })

@@ -7,4 +7,4 @@ SearchUsers API successful response
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `results`                                            | List[[models.TwitterUser](../models/twitteruser.md)] | :heavy_minus_sign:                                   | N/A                                                  |
+| `users`                                              | List[[models.TwitterUser](../models/twitteruser.md)] | :heavy_minus_sign:                                   | N/A                                                  |

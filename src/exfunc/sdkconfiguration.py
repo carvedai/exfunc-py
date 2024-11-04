@@ -27,9 +27,9 @@ class SDKConfiguration:
     server_idx: Optional[int] = 0
     language: str = "python"
     openapi_doc_version: str = "1.0.0"
-    sdk_version: str = "0.2.4"
+    sdk_version: str = "0.2.6"
     gen_version: str = "2.446.5"
-    user_agent: str = "speakeasy-sdk/python 0.2.4 2.446.5 1.0.0 exfunc"
+    user_agent: str = "speakeasy-sdk/python 0.2.6 2.446.5 1.0.0 exfunc"
     retry_config: OptionalNullable[RetryConfig] = Field(default_factory=lambda: UNSET)
     timeout_ms: Optional[int] = None
 

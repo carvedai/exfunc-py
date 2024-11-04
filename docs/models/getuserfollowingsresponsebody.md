@@ -7,4 +7,4 @@ GetUserFollowings API successful response
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `tweets`                                             | List[[models.TwitterUser](../models/twitteruser.md)] | :heavy_minus_sign:                                   | N/A                                                  |
+| `followings`                                         | List[[models.TwitterUser](../models/twitteruser.md)] | :heavy_minus_sign:                                   | N/A                                                  |

@@ -25,10 +25,10 @@ class GetUserFollowingsRequestBody(BaseModel):
 class GetUserFollowingsResponseBodyTypedDict(TypedDict):
     r"""GetUserFollowings API successful response"""
 
-    tweets: NotRequired[List[TwitterUserTypedDict]]
+    followings: NotRequired[List[TwitterUserTypedDict]]
 
 
 class GetUserFollowingsResponseBody(BaseModel):
     r"""GetUserFollowings API successful response"""
 
-    tweets: Optional[List[TwitterUser]] = None
+    followings: Optional[List[TwitterUser]] = None

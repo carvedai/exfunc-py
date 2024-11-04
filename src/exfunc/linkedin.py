@@ -775,7 +775,7 @@ class Linkedin(BaseSDK):
             http_res,
         )
 
-    def search_jobs(
+    def search_job_postings(
         self,
         *,
         request: Union[
@@ -872,7 +872,7 @@ class Linkedin(BaseSDK):
             http_res,
         )
 
-    async def search_jobs_async(
+    async def search_job_postings_async(
         self,
         *,
         request: Union[

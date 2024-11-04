@@ -1395,7 +1395,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "tweets": {
+                    "followings": {
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/TwitterUser"
@@ -1535,7 +1535,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
+                    "tweets": {
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/Tweet"
@@ -1600,7 +1600,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
+                    "users": {
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/TwitterUser"
@@ -2001,7 +2001,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "results": {
+                    "properties": {
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/ZillowProperty"

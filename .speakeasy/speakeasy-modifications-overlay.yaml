@@ -153,11 +153,11 @@ actions:
       created_at: 1730707522439
   - target: $["paths"]["/linkedin/search-job-postings"]["post"]
     update:
-      x-speakeasy-name-override: searchJobs
+      x-speakeasy-name-override: searchJobPostings
     x-speakeasy-metadata:
       type: method-name
       before: sdk.linkedin.search-job-postings()
-      after: sdk.linkedin.searchJobs()
+      after: sdk.linkedin.searchJobPostings()
       created_at: 1730707522439
   - target: $["paths"]["/google/get-product"]["post"]
     update:

@@ -40,10 +40,10 @@ class SearchTweetsRequestBody(BaseModel):
 class SearchTweetsResponseBodyTypedDict(TypedDict):
     r"""SearchTweets API successful response"""
 
-    results: NotRequired[List[TweetTypedDict]]
+    tweets: NotRequired[List[TweetTypedDict]]
 
 
 class SearchTweetsResponseBody(BaseModel):
     r"""SearchTweets API successful response"""
 
-    results: Optional[List[Tweet]] = None
+    tweets: Optional[List[Tweet]] = None

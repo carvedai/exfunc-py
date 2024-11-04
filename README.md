@@ -140,7 +140,7 @@ asyncio.run(main())
 * [get_job_posting](docs/sdks/linkedin/README.md#get_job_posting) - Get LinkedIn job posting info
 * [get_person](docs/sdks/linkedin/README.md#get_person) - Get LinkedIn person profile info
 * [search_companies](docs/sdks/linkedin/README.md#search_companies) - Search for LinkedIn companies
-* [search_jobs](docs/sdks/linkedin/README.md#search_jobs) - Search for LinkedIn job postings
+* [search_job_postings](docs/sdks/linkedin/README.md#search_job_postings) - Search for LinkedIn job postings
 * [search_people](docs/sdks/linkedin/README.md#search_people) - Search for LinkedIn people
 
 ### [navigator](docs/sdks/navigator/README.md)
