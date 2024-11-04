@@ -2,7 +2,7 @@ speakeasyVersion: 1.424.0
 sources:
     exfunc-OAS:
         sourceNamespace: exfunc-oas
-        sourceRevisionDigest: sha256:88bafec9a4d409bcd491fa94d1bc635dff817a8fa982c4aab860e50ac8aed463
+        sourceRevisionDigest: sha256:0a21d791c3d845d8bf4f2925ec3dadc347148ba18c3978740b93b5bb269aacf5
         sourceBlobDigest: sha256:a64fc7b0c812efca2b65e20de593dc8d3a86a5a7d20d3d680d00a57e142c7d91
         tags:
             - latest
@@ -10,7 +10,7 @@ targets:
     exfunc:
         source: exfunc-OAS
         sourceNamespace: exfunc-oas
-        sourceRevisionDigest: sha256:88bafec9a4d409bcd491fa94d1bc635dff817a8fa982c4aab860e50ac8aed463
+        sourceRevisionDigest: sha256:0a21d791c3d845d8bf4f2925ec3dadc347148ba18c3978740b93b5bb269aacf5
         sourceBlobDigest: sha256:a64fc7b0c812efca2b65e20de593dc8d3a86a5a7d20d3d680d00a57e142c7d91
 workflow:
     workflowVersion: 1.0.0
@@ -27,3 +27,6 @@ workflow:
         exfunc:
             target: python
             source: exfunc-OAS
+            publish:
+                pypi:
+                    token: $pypi_token
