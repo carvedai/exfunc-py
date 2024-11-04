@@ -1,0 +1,324 @@
+lockVersion: 2.0.0
+id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
+management:
+  docChecksum: 766f203049030f48414034eb8ac3c713
+  docVersion: 1.0.0
+  speakeasyVersion: 1.424.0
+  generationVersion: 2.445.1
+  releaseVersion: 0.2.0
+  configChecksum: e520b666788b417a5e8693f8a06a2fcb
+features:
+  python:
+    additionalDependencies: 1.0.0
+    core: 5.6.1
+    defaultEnabledRetries: 0.2.0
+    devContainers: 3.0.0
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.3.1
+    globalSecurity: 3.0.2
+    globalSecurityCallbacks: 1.0.0
+    globalSecurityFlattening: 1.0.0
+    globalServerURLs: 3.0.0
+    groups: 3.0.0
+    methodArguments: 1.0.2
+    nameOverrides: 3.0.0
+    responseFormat: 1.0.1
+    retries: 3.0.2
+    sdkHooks: 1.0.0
+    tests: 1.6.0
+generatedFiles:
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
+  - .gitattributes
+  - .python-version
+  - .vscode/settings.json
+  - CONTRIBUTING.md
+  - USAGE.md
+  - docs/models/address.md
+  - docs/models/categories.md
+  - docs/models/companies.md
+  - docs/models/dateposted.md
+  - docs/models/experiences.md
+  - docs/models/feedbackcounts.md
+  - docs/models/funding.md
+  - docs/models/getbusinessrequestbody.md
+  - docs/models/getbusinessresponsebody.md
+  - docs/models/getbusinessreviewsrequestbody.md
+  - docs/models/getbusinessreviewsresponsebody.md
+  - docs/models/getbusinessreviewssortby.md
+  - docs/models/getcompanyrequestbody.md
+  - docs/models/getcompanyresponsebody.md
+  - docs/models/getjobpostingrequestbody.md
+  - docs/models/getjobpostingresponsebody.md
+  - docs/models/getpersonrequestbody.md
+  - docs/models/getpersonresponsebody.md
+  - docs/models/getproductrequestbody.md
+  - docs/models/getproductresponsebody.md
+  - docs/models/getproductreviewsrequestbody.md
+  - docs/models/getproductreviewsresponsebody.md
+  - docs/models/getpropertyrequestbody.md
+  - docs/models/getpropertyresponsebody.md
+  - docs/models/gettaskrequestbody.md
+  - docs/models/gettaskresponsebody.md
+  - docs/models/gettweetrequestbody.md
+  - docs/models/gettweetresponsebody.md
+  - docs/models/getuserfollowersrequestbody.md
+  - docs/models/getuserfollowersresponsebody.md
+  - docs/models/getuserfollowingsrequestbody.md
+  - docs/models/getuserfollowingsresponsebody.md
+  - docs/models/getuserrequestbody.md
+  - docs/models/getuserresponsebody.md
+  - docs/models/getusertweetsrequestbody.md
+  - docs/models/getusertweetsresponsebody.md
+  - docs/models/googlenews.md
+  - docs/models/googleproduct.md
+  - docs/models/googleproductreview.md
+  - docs/models/investors.md
+  - docs/models/jobpostings.md
+  - docs/models/jobtypes.md
+  - docs/models/lastround.md
+  - docs/models/linkedincompany.md
+  - docs/models/linkedinjobposting.md
+  - docs/models/linkedinperson.md
+  - docs/models/listingstatus.md
+  - docs/models/maxnumbedrooms.md
+  - docs/models/minnumbedrooms.md
+  - docs/models/navigatortask.md
+  - docs/models/productcondition.md
+  - docs/models/request.md
+  - docs/models/response.md
+  - docs/models/results.md
+  - docs/models/salary.md
+  - docs/models/scraperequestbody.md
+  - docs/models/scraperesponsebody.md
+  - docs/models/searchbusinessesrequestbody.md
+  - docs/models/searchbusinessesresponsebody.md
+  - docs/models/searchbusinessessortby.md
+  - docs/models/searchcompaniesrequestbody.md
+  - docs/models/searchcompaniesresponsebody.md
+  - docs/models/searchjobpostingsrequestbody.md
+  - docs/models/searchjobpostingsresponsebody.md
+  - docs/models/searchnewsrequestbody.md
+  - docs/models/searchnewsresponsebody.md
+  - docs/models/searchpeoplerequestbody.md
+  - docs/models/searchpeopleresponsebody.md
+  - docs/models/searchproductsrequestbody.md
+  - docs/models/searchproductsresponsebody.md
+  - docs/models/searchpropertiesrequestbody.md
+  - docs/models/searchpropertiesresponsebody.md
+  - docs/models/searchpropertiessortby.md
+  - docs/models/searchtweetsrequestbody.md
+  - docs/models/searchtweetsresponsebody.md
+  - docs/models/searchusersrequestbody.md
+  - docs/models/searchusersresponsebody.md
+  - docs/models/searchwebrequestbody.md
+  - docs/models/searchwebresponsebody.md
+  - docs/models/security.md
+  - docs/models/servererror.md
+  - docs/models/sortby.md
+  - docs/models/starttaskrequestbody.md
+  - docs/models/starttaskresponsebody.md
+  - docs/models/status.md
+  - docs/models/timepublished.md
+  - docs/models/totalrounds.md
+  - docs/models/tweet.md
+  - docs/models/twitteruser.md
+  - docs/models/type.md
+  - docs/models/usererror.md
+  - docs/models/utils/retryconfig.md
+  - docs/models/worktypes.md
+  - docs/models/yelpbusiness.md
+  - docs/models/yelpreview.md
+  - docs/models/zillowpricehistoryevent.md
+  - docs/models/zillowproperty.md
+  - docs/sdks/exfunc/README.md
+  - docs/sdks/google/README.md
+  - docs/sdks/linkedin/README.md
+  - docs/sdks/navigator/README.md
+  - docs/sdks/twitter/README.md
+  - docs/sdks/yelp/README.md
+  - docs/sdks/zillow/README.md
+  - poetry.toml
+  - py.typed
+  - pylintrc
+  - pyproject.toml
+  - scripts/compile.sh
+  - scripts/prepare-readme.py
+  - scripts/publish.sh
+  - src/exfunc/__init__.py
+  - src/exfunc/_hooks/__init__.py
+  - src/exfunc/_hooks/sdkhooks.py
+  - src/exfunc/_hooks/types.py
+  - src/exfunc/_version.py
+  - src/exfunc/basesdk.py
+  - src/exfunc/google.py
+  - src/exfunc/httpclient.py
+  - src/exfunc/linkedin.py
+  - src/exfunc/models/__init__.py
+  - src/exfunc/models/get_business_reviewsop.py
+  - src/exfunc/models/get_businessop.py
+  - src/exfunc/models/get_companyop.py
+  - src/exfunc/models/get_job_postingop.py
+  - src/exfunc/models/get_personop.py
+  - src/exfunc/models/get_product_reviewsop.py
+  - src/exfunc/models/get_productop.py
+  - src/exfunc/models/get_propertyop.py
+  - src/exfunc/models/get_taskop.py
+  - src/exfunc/models/get_tweetop.py
+  - src/exfunc/models/get_user_followersop.py
+  - src/exfunc/models/get_user_tweetsop.py
+  - src/exfunc/models/get_userop.py
+  - src/exfunc/models/getuserfollowingsop.py
+  - src/exfunc/models/googlenews.py
+  - src/exfunc/models/googleproduct.py
+  - src/exfunc/models/googleproductreview.py
+  - src/exfunc/models/linkedincompany.py
+  - src/exfunc/models/linkedinjobposting.py
+  - src/exfunc/models/linkedinperson.py
+  - src/exfunc/models/navigatortask.py
+  - src/exfunc/models/scrapeop.py
+  - src/exfunc/models/sdkerror.py
+  - src/exfunc/models/search_businessesop.py
+  - src/exfunc/models/search_companiesop.py
+  - src/exfunc/models/search_job_postingsop.py
+  - src/exfunc/models/search_newsop.py
+  - src/exfunc/models/search_peopleop.py
+  - src/exfunc/models/search_productsop.py
+  - src/exfunc/models/search_propertiesop.py
+  - src/exfunc/models/search_tweetsop.py
+  - src/exfunc/models/search_usersop.py
+  - src/exfunc/models/search_webop.py
+  - src/exfunc/models/security.py
+  - src/exfunc/models/servererror.py
+  - src/exfunc/models/start_taskop.py
+  - src/exfunc/models/tweet.py
+  - src/exfunc/models/twitteruser.py
+  - src/exfunc/models/usererror.py
+  - src/exfunc/models/yelpbusiness.py
+  - src/exfunc/models/yelpreview.py
+  - src/exfunc/models/zillowpricehistoryevent.py
+  - src/exfunc/models/zillowproperty.py
+  - src/exfunc/navigator.py
+  - src/exfunc/py.typed
+  - src/exfunc/sdk.py
+  - src/exfunc/sdkconfiguration.py
+  - src/exfunc/twitter.py
+  - src/exfunc/types/__init__.py
+  - src/exfunc/types/basemodel.py
+  - src/exfunc/utils/__init__.py
+  - src/exfunc/utils/annotations.py
+  - src/exfunc/utils/enums.py
+  - src/exfunc/utils/eventstreaming.py
+  - src/exfunc/utils/forms.py
+  - src/exfunc/utils/headers.py
+  - src/exfunc/utils/logger.py
+  - src/exfunc/utils/metadata.py
+  - src/exfunc/utils/queryparams.py
+  - src/exfunc/utils/requestbodies.py
+  - src/exfunc/utils/retries.py
+  - src/exfunc/utils/security.py
+  - src/exfunc/utils/serializers.py
+  - src/exfunc/utils/url.py
+  - src/exfunc/utils/values.py
+  - src/exfunc/yelp.py
+  - src/exfunc/zillow.py
+examples:
+  get-product:
+    speakeasy-default-get-product:
+      requestBody:
+        application/json: {"product_id": "<id>"}
+  get-product-reviews:
+    speakeasy-default-get-product-reviews:
+      requestBody:
+        application/json: {"product_id": "<id>"}
+  search-news:
+    speakeasy-default-search-news:
+      requestBody:
+        application/json: {"query": "<value>"}
+  search-products:
+    speakeasy-default-search-products:
+      requestBody:
+        application/json: {"query": "<value>"}
+  search-web:
+    speakeasy-default-search-web:
+      requestBody:
+        application/json: {"query": "<value>"}
+  get-company:
+    speakeasy-default-get-company:
+      requestBody:
+        application/json: {"company_url": "https://minty-adaptation.biz/"}
+  get-job-posting:
+    speakeasy-default-get-job-posting:
+      requestBody:
+        application/json: {"job_posting_url": "https://exalted-comestible.info"}
+  get-person:
+    speakeasy-default-get-person:
+      requestBody:
+        application/json: {"person_url": "https://silky-spring.biz/"}
+  search-companies: {}
+  search-job-postings:
+    speakeasy-default-search-job-postings:
+      requestBody:
+        application/json: {"keywords": "<value>", "location": "<value>"}
+  search-people:
+    speakeasy-default-search-people:
+      requestBody:
+        application/json: {"keywords": "<value>"}
+  get-task:
+    speakeasy-default-get-task:
+      requestBody:
+        application/json: {"task_id": "<id>"}
+  start-task:
+    speakeasy-default-start-task:
+      requestBody:
+        application/json: {"url": "https://narrow-jump.net", "objective": "<value>"}
+  scrape:
+    speakeasy-default-scrape:
+      requestBody:
+        application/json: {"url": "https://hasty-promise.com"}
+  get-tweet:
+    speakeasy-default-get-tweet:
+      requestBody:
+        application/json: {"tweet_id": "<id>"}
+  get-user: {}
+  get-user-followers:
+    speakeasy-default-get-user-followers:
+      requestBody:
+        application/json: {"username": "Timmy_Bogan"}
+  getUserFollowings:
+    speakeasy-default-get-user-followings:
+      requestBody:
+        application/json: {"username": "Nathaniel84"}
+  get-user-tweets:
+    speakeasy-default-get-user-tweets:
+      requestBody:
+        application/json: {"username": "Fatima_Mosciski"}
+  search-tweets:
+    speakeasy-default-search-tweets:
+      requestBody:
+        application/json: {"query": "<value>"}
+  search-users:
+    speakeasy-default-search-users:
+      requestBody:
+        application/json: {"query": "<value>"}
+  get-business:
+    speakeasy-default-get-business:
+      requestBody:
+        application/json: {"business_id": "<id>"}
+  get-business-reviews:
+    speakeasy-default-get-business-reviews:
+      requestBody:
+        application/json: {"business_id": "<id>"}
+  search-businesses:
+    speakeasy-default-search-businesses:
+      requestBody:
+        application/json: {"query": "<value>", "location": "<value>"}
+  get-property:
+    speakeasy-default-get-property:
+      requestBody:
+        application/json: {"property_id": "<id>"}
+  search-properties:
+    speakeasy-default-search-properties:
+      requestBody:
+        application/json: {"location": "<value>", "listing_status": "for_rent"}

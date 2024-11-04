@@ -1,0 +1,18 @@
+# GoogleProduct
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `product_id`                                                        | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | The unique identifier for the product                               |
+| `title`                                                             | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | The title of the product                                            |
+| `description`                                                       | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | A detailed description of the product                               |
+| `photos`                                                            | List[*str*]                                                         | :heavy_minus_sign:                                                  | An array of URLs for the product photos                             |
+| `attributes`                                                        | Dict[str, *str*]                                                    | :heavy_minus_sign:                                                  | A set of attributes for the product, represented as key-value pairs |
+| `rating`                                                            | *Optional[float]*                                                   | :heavy_minus_sign:                                                  | The average rating of the product                                   |
+| `page_url`                                                          | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | The URL link to the product page                                    |
+| `num_reviews`                                                       | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | The total number of reviews for the product                         |
+| `reviews_per_rating`                                                | Dict[str, *int*]                                                    | :heavy_minus_sign:                                                  | The number of reviews for each rating level                         |
+| `product_details`                                                   | Dict[str, *str*]                                                    | :heavy_minus_sign:                                                  | Detailed information about the product                              |
+| `product_specs`                                                     | Dict[str, *str*]                                                    | :heavy_minus_sign:                                                  | Technical specifications of the product                             |

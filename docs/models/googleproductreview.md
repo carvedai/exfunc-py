@@ -1,0 +1,16 @@
+# GoogleProductReview
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `review_id`                                                          | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The unique identifier for the review                                 |
+| `title`                                                              | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The title of the review                                              |
+| `author`                                                             | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The author of the review                                             |
+| `source`                                                             | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The source where the review was published                            |
+| `source_url`                                                         | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The URL link to the review source                                    |
+| `text`                                                               | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The text content of the review                                       |
+| `rating`                                                             | *Optional[float]*                                                    | :heavy_minus_sign:                                                   | The rating given in the review                                       |
+| `datetime_utc`                                                       | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | The date and time when the review was published in UTC               |
+| `photos`                                                             | List[*str*]                                                          | :heavy_minus_sign:                                                   | An array of URLs for photos included in the review                   |

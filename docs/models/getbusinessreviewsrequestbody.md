@@ -1,0 +1,11 @@
+# GetBusinessReviewsRequestBody
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `business_id`                                                                      | *str*                                                                              | :heavy_check_mark:                                                                 | The ID of the business to retrieve reviews for                                     |
+| `sort_by`                                                                          | [Optional[models.GetBusinessReviewsSortBy]](../models/getbusinessreviewssortby.md) | :heavy_minus_sign:                                                                 | The criteria to sort reviews (e.g., "best_match", "newest", etc.)                  |
+| `page`                                                                             | *Optional[int]*                                                                    | :heavy_minus_sign:                                                                 | The page number of results to retrieve (default is 1)                              |
+| `per_page`                                                                         | *Optional[int]*                                                                    | :heavy_minus_sign:                                                                 | The number of reviews to retrieve per page (default is 10)                         |
