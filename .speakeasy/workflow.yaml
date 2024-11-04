@@ -12,3 +12,6 @@ targets:
     exfunc:
         target: python
         source: exfunc-OAS
+        publish:
+            pypi:
+                token: $pypi_token
