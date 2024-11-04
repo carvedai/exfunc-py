@@ -1146,9 +1146,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "page_html": {
+                    "html": {
                       "type": "string",
                       "description": "The page html of the website"
+                    },
+                    "markdown": {
+                      "type": "string",
+                      "description": "The markdown string of the page"
                     }
                   }
                 }
@@ -2406,13 +2410,17 @@
           "response": {
             "type": "object",
             "properties": {
-              "page_img": {
+              "html": {
+                "type": "string",
+                "description": "The HTML string of the page that the navigator reached"
+              },
+              "img": {
                 "type": "string",
                 "description": "The base64-encoded string for screenshot of the page that the navigator reached"
               },
-              "page_html": {
+              "markdown": {
                 "type": "string",
-                "description": "The HTML string of the page that the navigator reached"
+                "description": "The markdown string of the page that the navigator reached"
               }
             }
           },

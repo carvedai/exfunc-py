@@ -19,12 +19,17 @@ class ScrapeRequestBody(BaseModel):
 class ScrapeResponseBodyTypedDict(TypedDict):
     r"""Scrape API successful response"""
 
-    page_html: NotRequired[str]
+    html: NotRequired[str]
     r"""The page html of the website"""
+    markdown: NotRequired[str]
+    r"""The markdown string of the page"""
 
 
 class ScrapeResponseBody(BaseModel):
     r"""Scrape API successful response"""
 
-    page_html: Optional[str] = None
+    html: Optional[str] = None
     r"""The page html of the website"""
+
+    markdown: Optional[str] = None
+    r"""The markdown string of the page"""

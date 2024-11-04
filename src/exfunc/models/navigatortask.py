@@ -24,18 +24,23 @@ class Request(BaseModel):
 
 
 class ResponseTypedDict(TypedDict):
-    page_img: NotRequired[str]
-    r"""The base64-encoded string for screenshot of the page that the navigator reached"""
-    page_html: NotRequired[str]
+    html: NotRequired[str]
     r"""The HTML string of the page that the navigator reached"""
+    img: NotRequired[str]
+    r"""The base64-encoded string for screenshot of the page that the navigator reached"""
+    markdown: NotRequired[str]
+    r"""The markdown string of the page that the navigator reached"""
 
 
 class Response(BaseModel):
-    page_img: Optional[str] = None
+    html: Optional[str] = None
+    r"""The HTML string of the page that the navigator reached"""
+
+    img: Optional[str] = None
     r"""The base64-encoded string for screenshot of the page that the navigator reached"""
 
-    page_html: Optional[str] = None
-    r"""The HTML string of the page that the navigator reached"""
+    markdown: Optional[str] = None
+    r"""The markdown string of the page that the navigator reached"""
 
 
 class Status(str, Enum):
