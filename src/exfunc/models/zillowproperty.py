@@ -5,8 +5,9 @@ from .zillowpricehistoryevent import (
     ZillowPriceHistoryEvent,
     ZillowPriceHistoryEventTypedDict,
 )
-from exfunc.types import BaseModel
+from exfunc.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
+from pydantic import model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -58,21 +59,21 @@ class ZillowPropertyTypedDict(TypedDict):
     r"""Number of bathrooms in the property"""
     bedrooms: NotRequired[int]
     r"""Number of bedrooms in the property"""
-    living_area: NotRequired[float]
+    living_area: NotRequired[Nullable[float]]
     r"""The living area of the property in square feet"""
-    year_built: NotRequired[int]
+    year_built: NotRequired[Nullable[int]]
     r"""The year the property was built"""
     property_type: NotRequired[str]
     r"""Type of the property (e.g. house, condo)"""
     listing_status: NotRequired[str]
     r"""Status of the listing (e.g. forSale, sold)"""
-    days_on_zillow: NotRequired[int]
+    days_on_zillow: NotRequired[Nullable[int]]
     r"""Number of days the property has been listed on Zillow"""
     price: NotRequired[float]
     r"""Listing price of the property"""
-    zestimate: NotRequired[float]
+    zestimate: NotRequired[Nullable[float]]
     r"""Zillow's estimated value of the property"""
-    rent_zestimate: NotRequired[float]
+    rent_zestimate: NotRequired[Nullable[float]]
     r"""Zillow's estimated value of the rent for the property"""
     price_history: NotRequired[List[ZillowPriceHistoryEventTypedDict]]
 
@@ -93,10 +94,10 @@ class ZillowProperty(BaseModel):
     bedrooms: Optional[int] = None
     r"""Number of bedrooms in the property"""
 
-    living_area: Optional[float] = None
+    living_area: OptionalNullable[float] = UNSET
     r"""The living area of the property in square feet"""
 
-    year_built: Optional[int] = None
+    year_built: OptionalNullable[int] = UNSET
     r"""The year the property was built"""
 
     property_type: Optional[str] = None
@@ -105,16 +106,67 @@ class ZillowProperty(BaseModel):
     listing_status: Optional[str] = None
     r"""Status of the listing (e.g. forSale, sold)"""
 
-    days_on_zillow: Optional[int] = None
+    days_on_zillow: OptionalNullable[int] = UNSET
     r"""Number of days the property has been listed on Zillow"""
 
     price: Optional[float] = None
     r"""Listing price of the property"""
 
-    zestimate: Optional[float] = None
+    zestimate: OptionalNullable[float] = UNSET
     r"""Zillow's estimated value of the property"""
 
-    rent_zestimate: Optional[float] = None
+    rent_zestimate: OptionalNullable[float] = UNSET
     r"""Zillow's estimated value of the rent for the property"""
 
     price_history: Optional[List[ZillowPriceHistoryEvent]] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = [
+            "property_id",
+            "address",
+            "photos",
+            "bathrooms",
+            "bedrooms",
+            "living_area",
+            "year_built",
+            "property_type",
+            "listing_status",
+            "days_on_zillow",
+            "price",
+            "zestimate",
+            "rent_zestimate",
+            "price_history",
+        ]
+        nullable_fields = [
+            "living_area",
+            "year_built",
+            "days_on_zillow",
+            "zestimate",
+            "rent_zestimate",
+        ]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in self.model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m

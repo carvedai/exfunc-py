@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: b6c7cb4bd5348568530ae826e740936d
+  docChecksum: 1c4d71cb385bf624155453e5158addff
   docVersion: 1.0.0
-  speakeasyVersion: 1.425.2
+  speakeasyVersion: 1.426.0
   generationVersion: 2.446.5
-  releaseVersion: 0.2.6
-  configChecksum: 3d54c8b1d32b5c207ef346da667c3aa2
+  releaseVersion: 0.3.0
+  configChecksum: d278ab33b7efcf96bee1114c37f41f5b
   published: true
 features:
   python:
@@ -23,6 +23,7 @@ features:
     groups: 3.0.0
     methodArguments: 1.0.2
     nameOverrides: 3.0.0
+    nullables: 1.0.0
     responseFormat: 1.0.1
     retries: 3.0.2
     sdkHooks: 1.0.0
