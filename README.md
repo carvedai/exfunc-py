@@ -1,4 +1,4 @@
-# exfunc
+# Exfunc Python SDK
 
 Developer-friendly & type-safe Python SDK specifically catered to leverage *exfunc* API.
 
@@ -10,19 +10,11 @@ Developer-friendly & type-safe Python SDK specifically catered to leverage *exfu
 </div>
 
 
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/nunchi/nunchi). Delete this section before > publishing to a package manager.
-
 <!-- Start Summary [summary] -->
 ## Summary
 
-Exfunc APIs: # Authentication
+Exfunc Python SDK is a library that allows you to easily take web actions on websites from your Python codebase.
 
-Exfunc offers one form of authentication:
-  - API Key
-
-<SecurityDefinitions />
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -78,7 +70,6 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ### Example
 
 ```python
-# Synchronous Example
 from exfunc import Exfunc
 import os
 
@@ -99,7 +90,6 @@ if res is not None:
 
 The same SDK client can also be used to make asychronous requests by importing asyncio.
 ```python
-# Asynchronous Example
 import asyncio
 from exfunc import Exfunc
 import os
@@ -274,62 +264,6 @@ except models.SDKError as e:
     raise(e)
 ```
 <!-- End Error Handling [errors] -->
-
-<!-- Start Server Selection [server] -->
-## Server Selection
-
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.exfunc.com` | None |
-
-#### Example
-
-```python
-from exfunc import Exfunc
-import os
-
-s = Exfunc(
-    server_idx=0,
-    api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
-
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
-```python
-from exfunc import Exfunc
-import os
-
-s = Exfunc(
-    server_url="https://api.exfunc.com",
-    api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
-
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-<!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client

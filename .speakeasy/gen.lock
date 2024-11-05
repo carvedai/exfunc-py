@@ -3,15 +3,15 @@ id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
   docChecksum: 1c4d71cb385bf624155453e5158addff
   docVersion: 1.0.0
-  speakeasyVersion: 1.426.0
-  generationVersion: 2.446.5
-  releaseVersion: 0.3.0
-  configChecksum: d278ab33b7efcf96bee1114c37f41f5b
+  speakeasyVersion: 1.430.0
+  generationVersion: 2.449.0
+  releaseVersion: 0.3.1
+  configChecksum: 3aba22668a5ac10eb2f9f0ae47016375
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.6.3
+    core: 5.6.4
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
