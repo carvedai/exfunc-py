@@ -15,3 +15,7 @@ targets:
         publish:
             pypi:
                 token: $pypi_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/nunchi/nunchi/exfunc-oas-code-samples
+            blocking: false

@@ -13,8 +13,12 @@ Developer-friendly & type-safe Python SDK specifically catered to leverage *exfu
 <!-- Start Summary [summary] -->
 ## Summary
 
-Exfunc Python SDK is a library that allows you to easily take web actions on websites from your Python codebase.
+Exfunc APIs: # Authentication
 
+Exfunc offers one form of authentication:
+  - API Key
+
+<SecurityDefinitions />
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -70,6 +74,7 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ### Example
 
 ```python
+# Synchronous Example
 from exfunc import Exfunc
 import os
 
@@ -90,6 +95,7 @@ if res is not None:
 
 The same SDK client can also be used to make asychronous requests by importing asyncio.
 ```python
+# Asynchronous Example
 import asyncio
 from exfunc import Exfunc
 import os
@@ -227,11 +233,11 @@ By default, an API error will raise a models.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get_product_async` method may raise the following exceptions:
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.UserError   | 400                | application/json   |
-| models.ServerError | 500                | application/json   |
-| models.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type         | Status Code | Content Type     |
+| ------------------ | ----------- | ---------------- |
+| models.UserError   | 400         | application/json |
+| models.ServerError | 500         | application/json |
+| models.SDKError    | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -264,6 +270,32 @@ except models.SDKError as e:
     raise(e)
 ```
 <!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+from exfunc import Exfunc
+import os
+
+s = Exfunc(
+    server_url="https://api.exfunc.com",
+    api_key=os.getenv("EXFUNC_API_KEY", ""),
+)
+
+res = s.google.get_product(request={
+    "product_id": "<id>",
+})
+
+if res is not None:
+    # handle response
+    pass
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
@@ -353,9 +385,9 @@ s = Exfunc(async_client=CustomClient(httpx.AsyncClient()))
 
 This SDK supports the following security scheme globally:
 
-| Name                 | Type                 | Scheme               | Environment Variable |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `api_key`            | apiKey               | API key              | `EXFUNC_API_KEY`     |
+| Name      | Type   | Scheme  | Environment Variable |
+| --------- | ------ | ------- | -------------------- |
+| `api_key` | apiKey | API key | `EXFUNC_API_KEY`     |
 
 To authenticate with the API the `api_key` parameter must be set when initializing the SDK client instance. For example:
 ```python
