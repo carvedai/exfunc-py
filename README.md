@@ -13,12 +13,8 @@ Developer-friendly & type-safe Python SDK specifically catered to leverage *exfu
 <!-- Start Summary [summary] -->
 ## Summary
 
-Exfunc APIs: # Authentication
+Exfunc Python SDK is a library that allows you to easily take web actions on websites from your Python codebase.
 
-Exfunc offers one form of authentication:
-  - API Key
-
-<SecurityDefinitions />
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -30,7 +26,6 @@ Exfunc offers one form of authentication:
 * [Available Resources and Operations](#available-resources-and-operations)
 * [Retries](#retries)
 * [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
 * [Custom HTTP Client](#custom-http-client)
 * [Authentication](#authentication)
 * [Debugging](#debugging)
@@ -74,7 +69,6 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ### Example
 
 ```python
-# Synchronous Example
 from exfunc import Exfunc
 import os
 
@@ -95,7 +89,6 @@ if res is not None:
 
 The same SDK client can also be used to make asychronous requests by importing asyncio.
 ```python
-# Asynchronous Example
 import asyncio
 from exfunc import Exfunc
 import os
@@ -270,32 +263,6 @@ except models.SDKError as e:
     raise(e)
 ```
 <!-- End Error Handling [errors] -->
-
-<!-- Start Server Selection [server] -->
-## Server Selection
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
-```python
-from exfunc import Exfunc
-import os
-
-s = Exfunc(
-    server_url="https://api.exfunc.com",
-    api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
-
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-<!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
