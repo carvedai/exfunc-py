@@ -12,6 +12,7 @@ class SortBy(str, Enum):
     r"""Sort the results by a specific field"""
 
     BEST_MATCH = "best_match"
+    TOP_RATED = "top_rated"
     LOWEST_PRICE = "lowest_price"
     HIGHEST_PRICE = "highest_price"
 

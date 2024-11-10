@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: 3c546f6eab35985c6c44b9c6b27dbca3
+  docChecksum: 37b2f94de226ea00e2f8310c4c33d520
   docVersion: 1.0.0
   speakeasyVersion: 1.436.0
   generationVersion: 2.455.2
-  releaseVersion: 0.3.2
-  configChecksum: ca0f18e111a3843cb614d2997b3264f0
+  releaseVersion: 0.3.3
+  configChecksum: cb40153ec7a85e72f6c8ed119d1000ee
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
@@ -83,6 +83,8 @@ generatedFiles:
   - docs/models/jobtypes.md
   - docs/models/lastround.md
   - docs/models/linkedincompany.md
+  - docs/models/linkedincompanyindustry.md
+  - docs/models/linkedincompanysize.md
   - docs/models/linkedinjobposting.md
   - docs/models/linkedinperson.md
   - docs/models/listingstatus.md
@@ -119,6 +121,7 @@ generatedFiles:
   - docs/models/searchwebrequestbody.md
   - docs/models/searchwebresponsebody.md
   - docs/models/security.md
+  - docs/models/seniorities.md
   - docs/models/servererror.md
   - docs/models/sortby.md
   - docs/models/starttaskrequestbody.md
@@ -177,6 +180,8 @@ generatedFiles:
   - src/exfunc/models/googleproduct.py
   - src/exfunc/models/googleproductreview.py
   - src/exfunc/models/linkedincompany.py
+  - src/exfunc/models/linkedincompanyindustry.py
+  - src/exfunc/models/linkedincompanysize.py
   - src/exfunc/models/linkedinjobposting.py
   - src/exfunc/models/linkedinperson.py
   - src/exfunc/models/navigatortask.py

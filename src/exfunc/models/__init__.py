@@ -100,6 +100,8 @@ from .linkedincompany import (
     TotalRounds,
     TotalRoundsTypedDict,
 )
+from .linkedincompanyindustry import LinkedInCompanyIndustry
+from .linkedincompanysize import LinkedInCompanySize
 from .linkedinjobposting import LinkedInJobPosting, LinkedInJobPostingTypedDict
 from .linkedinperson import (
     Experiences,
@@ -162,6 +164,7 @@ from .search_peopleop import (
     SearchPeopleRequestBodyTypedDict,
     SearchPeopleResponseBody,
     SearchPeopleResponseBodyTypedDict,
+    Seniorities,
 )
 from .search_productsop import (
     ProductCondition,
@@ -321,6 +324,8 @@ __all__ = [
     "LastRound",
     "LastRoundTypedDict",
     "LinkedInCompany",
+    "LinkedInCompanyIndustry",
+    "LinkedInCompanySize",
     "LinkedInCompanyTypedDict",
     "LinkedInJobPosting",
     "LinkedInJobPostingTypedDict",
@@ -388,6 +393,7 @@ __all__ = [
     "SearchWebResponseBodyTypedDict",
     "Security",
     "SecurityTypedDict",
+    "Seniorities",
     "ServerError",
     "ServerErrorData",
     "SortBy",

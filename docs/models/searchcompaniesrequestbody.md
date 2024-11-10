@@ -3,10 +3,10 @@
 
 ## Fields
 
-| Field                                     | Type                                      | Required                                  | Description                               |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| `name`                                    | *Optional[str]*                           | :heavy_minus_sign:                        | The name of the company to search for     |
-| `locations`                               | List[*str*]                               | :heavy_minus_sign:                        | N/A                                       |
-| `sizes`                                   | List[*str*]                               | :heavy_minus_sign:                        | N/A                                       |
-| `industries`                              | List[*str*]                               | :heavy_minus_sign:                        | N/A                                       |
-| `page`                                    | *Optional[int]*                           | :heavy_minus_sign:                        | Page number for pagination (default is 1) |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `name`                                                                       | *Optional[str]*                                                              | :heavy_minus_sign:                                                           | The name of the company to search for                                        |
+| `locations`                                                                  | List[*str*]                                                                  | :heavy_minus_sign:                                                           | List of locations to filter the search                                       |
+| `sizes`                                                                      | List[[models.LinkedInCompanySize](../models/linkedincompanysize.md)]         | :heavy_minus_sign:                                                           | List of company sizes to filter the search                                   |
+| `industries`                                                                 | List[[models.LinkedInCompanyIndustry](../models/linkedincompanyindustry.md)] | :heavy_minus_sign:                                                           | List of industry tags to filter the search                                   |
+| `page`                                                                       | *Optional[int]*                                                              | :heavy_minus_sign:                                                           | Page number for pagination (default is 1)                                    |
