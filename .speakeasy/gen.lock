@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: 37b2f94de226ea00e2f8310c4c33d520
+  docChecksum: 9c37acdbb9d07efb78666f5d170a1ff8
   docVersion: 1.0.0
-  speakeasyVersion: 1.436.0
-  generationVersion: 2.455.2
-  releaseVersion: 0.3.3
-  configChecksum: cb40153ec7a85e72f6c8ed119d1000ee
+  speakeasyVersion: 1.438.1
+  generationVersion: 2.457.2
+  releaseVersion: 0.3.4
+  configChecksum: e0e450eadc37591367914ea7337a542e
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
@@ -43,6 +43,7 @@ generatedFiles:
   - docs/models/categories.md
   - docs/models/companies.md
   - docs/models/dateposted.md
+  - docs/models/experiencelevel.md
   - docs/models/experiences.md
   - docs/models/feedbackcounts.md
   - docs/models/funding.md
@@ -80,7 +81,7 @@ generatedFiles:
   - docs/models/googleproductreview.md
   - docs/models/investors.md
   - docs/models/jobpostings.md
-  - docs/models/jobtypes.md
+  - docs/models/jobtype.md
   - docs/models/lastround.md
   - docs/models/linkedincompany.md
   - docs/models/linkedincompanyindustry.md
@@ -105,6 +106,7 @@ generatedFiles:
   - docs/models/searchcompaniesresponsebody.md
   - docs/models/searchjobpostingsrequestbody.md
   - docs/models/searchjobpostingsresponsebody.md
+  - docs/models/searchjobpostingssortby.md
   - docs/models/searchnewsrequestbody.md
   - docs/models/searchnewsresponsebody.md
   - docs/models/searchpeoplerequestbody.md
@@ -134,7 +136,7 @@ generatedFiles:
   - docs/models/type.md
   - docs/models/usererror.md
   - docs/models/utils/retryconfig.md
-  - docs/models/worktypes.md
+  - docs/models/worktype.md
   - docs/models/yelpbusiness.md
   - docs/models/yelpreview.md
   - docs/models/zillowpricehistoryevent.md

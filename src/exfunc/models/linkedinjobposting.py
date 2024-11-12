@@ -3,7 +3,7 @@
 from __future__ import annotations
 from datetime import datetime
 from exfunc.types import BaseModel
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -18,20 +18,16 @@ class LinkedInJobPostingTypedDict(TypedDict):
     r"""Detailed description of the job"""
     job_type: NotRequired[str]
     r"""Type of job (e.g., full-time, part-time)"""
-    job_function: NotRequired[str]
-    r"""Job function or category"""
-    industries: NotRequired[str]
+    job_functions: NotRequired[List[str]]
+    r"""List of job functions or categories"""
+    industries: NotRequired[List[str]]
     r"""List of industries relevant to the job"""
     seniority_level: NotRequired[str]
     r"""Seniority level of the job (e.g., junior, senior)"""
-    applicants: NotRequired[str]
+    applicants: NotRequired[float]
     r"""Number of applicants for the job"""
     date_posted: NotRequired[datetime]
     r"""Date when the job was posted"""
-    job_poster_name: NotRequired[str]
-    r"""Name of the person who posted the job"""
-    job_poster_url: NotRequired[str]
-    r"""URL to the job poster's profile"""
     company_name: NotRequired[str]
     r"""Name of the company offering the job"""
     company_url: NotRequired[str]
@@ -54,26 +50,20 @@ class LinkedInJobPosting(BaseModel):
     job_type: Optional[str] = None
     r"""Type of job (e.g., full-time, part-time)"""
 
-    job_function: Optional[str] = None
-    r"""Job function or category"""
+    job_functions: Optional[List[str]] = None
+    r"""List of job functions or categories"""
 
-    industries: Optional[str] = None
+    industries: Optional[List[str]] = None
     r"""List of industries relevant to the job"""
 
     seniority_level: Optional[str] = None
     r"""Seniority level of the job (e.g., junior, senior)"""
 
-    applicants: Optional[str] = None
+    applicants: Optional[float] = None
     r"""Number of applicants for the job"""
 
     date_posted: Optional[datetime] = None
     r"""Date when the job was posted"""
-
-    job_poster_name: Optional[str] = None
-    r"""Name of the person who posted the job"""
-
-    job_poster_url: Optional[str] = None
-    r"""URL to the job poster's profile"""
 
     company_name: Optional[str] = None
     r"""Name of the company offering the job"""

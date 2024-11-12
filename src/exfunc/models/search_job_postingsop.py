@@ -11,6 +11,7 @@ from typing_extensions import NotRequired, TypedDict
 class DatePosted(str, Enum):
     r"""Filter for job postings based on when they were posted"""
 
+    ANY_TIME = "Any time"
     PAST_24_HOURS = "Past 24 hours"
     PAST_WEEK = "Past Week"
     PAST_MONTH = "Past Month"
@@ -24,38 +25,66 @@ class Salary(str, Enum):
     DOLLAR_80_000_PLUS_ = "$80,000+"
     DOLLAR_100_000_PLUS_ = "$100,000+"
     DOLLAR_120_000_PLUS_ = "$120,000+"
+    DOLLAR_140_000_PLUS_ = "$140,000+"
+    DOLLAR_160_000_PLUS_ = "$160,000+"
+    DOLLAR_180_000_PLUS_ = "$180,000+"
+    DOLLAR_200_000_PLUS_ = "$200,000+"
 
 
-class JobTypes(str, Enum):
-    r"""Job types to filter (e.g., Full-time, Part-time)"""
+class JobType(str, Enum):
+    r"""Job type to filter (e.g., Full-time, Part-time)"""
 
     CONTRACT = "Contract"
     FULL_TIME = "Full-time"
     PART_TIME = "Part-time"
-    TEMPORARY = "Temporary"
-    VOLUNTEER = "Volunteer"
+    INTERNSHIP = "Internship"
 
 
-class WorkTypes(str, Enum):
-    r"""Work types to filter (e.g., Remote, On-site)"""
+class WorkType(str, Enum):
+    r"""Work type to filter (e.g., Remote, On-site)"""
 
     ON_SITE = "On-site"
     REMOTE = "Remote"
     HYBRID = "Hybrid"
 
 
+class ExperienceLevel(str, Enum):
+    r"""Experience level to filter (e.g., Associate, Executive)"""
+
+    ASSOCIATE = "Associate"
+    DIRECTOR = "Director"
+    ENTRY_LEVEL = "Entry Level"
+    EXECUTIVE = "Executive"
+    INTERNSHIP = "Internship"
+    MID_SENIOR_LEVEL = "Mid-Senior Level"
+
+
+class SearchJobPostingsSortBy(str, Enum):
+    r"""The criteria to sort results"""
+
+    MOST_RECENT = "Most Recent"
+    MOST_RELEVANT = "Most Relevant"
+
+
 class SearchJobPostingsRequestBodyTypedDict(TypedDict):
     keywords: str
     r"""Keywords to search for in job postings"""
-    location: str
+    location: NotRequired[str]
     r"""Location to filter job postings"""
     date_posted: NotRequired[DatePosted]
     r"""Filter for job postings based on when they were posted"""
     salary: NotRequired[Salary]
     r"""Salary range to filter job postings"""
-    job_types: NotRequired[List[JobTypes]]
-    work_types: NotRequired[List[WorkTypes]]
+    job_type: NotRequired[JobType]
+    r"""Job type to filter (e.g., Full-time, Part-time)"""
+    work_type: NotRequired[WorkType]
+    r"""Work type to filter (e.g., Remote, On-site)"""
+    experience_level: NotRequired[ExperienceLevel]
+    r"""Experience level to filter (e.g., Associate, Executive)"""
     company_uids: NotRequired[List[str]]
+    r"""List of company unique identifiers to filter"""
+    sort_by: NotRequired[SearchJobPostingsSortBy]
+    r"""The criteria to sort results"""
     page: NotRequired[int]
     r"""Page number for pagination (default is 1)"""
 
@@ -64,7 +93,7 @@ class SearchJobPostingsRequestBody(BaseModel):
     keywords: str
     r"""Keywords to search for in job postings"""
 
-    location: str
+    location: Optional[str] = None
     r"""Location to filter job postings"""
 
     date_posted: Optional[DatePosted] = None
@@ -73,11 +102,20 @@ class SearchJobPostingsRequestBody(BaseModel):
     salary: Optional[Salary] = None
     r"""Salary range to filter job postings"""
 
-    job_types: Optional[List[JobTypes]] = None
+    job_type: Optional[JobType] = None
+    r"""Job type to filter (e.g., Full-time, Part-time)"""
 
-    work_types: Optional[List[WorkTypes]] = None
+    work_type: Optional[WorkType] = None
+    r"""Work type to filter (e.g., Remote, On-site)"""
+
+    experience_level: Optional[ExperienceLevel] = None
+    r"""Experience level to filter (e.g., Associate, Executive)"""
 
     company_uids: Optional[List[str]] = None
+    r"""List of company unique identifiers to filter"""
+
+    sort_by: Optional[SearchJobPostingsSortBy] = None
+    r"""The criteria to sort results"""
 
     page: Optional[int] = None
     r"""Page number for pagination (default is 1)"""

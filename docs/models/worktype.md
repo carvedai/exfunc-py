@@ -1,6 +1,6 @@
-# WorkTypes
+# WorkType
 
-Work types to filter (e.g., Remote, On-site)
+Work type to filter (e.g., Remote, On-site)
 
 
 ## Values
