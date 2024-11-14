@@ -161,6 +161,14 @@ from .search_newsop import (
     SearchNewsResponseBodyTypedDict,
     TimePublished,
 )
+from .search_one_wayop import (
+    CabinClass,
+    SearchOneWayRequestBody,
+    SearchOneWayRequestBodyTypedDict,
+    SearchOneWayResponseBody,
+    SearchOneWayResponseBodyTypedDict,
+    Stops,
+)
 from .search_peopleop import (
     SearchPeopleRequestBody,
     SearchPeopleRequestBodyTypedDict,
@@ -186,6 +194,14 @@ from .search_propertiesop import (
     SearchPropertiesResponseBodyTypedDict,
     SearchPropertiesSortBy,
 )
+from .search_roundtripop import (
+    SearchRoundtripCabinClass,
+    SearchRoundtripRequestBody,
+    SearchRoundtripRequestBodyTypedDict,
+    SearchRoundtripResponseBody,
+    SearchRoundtripResponseBodyTypedDict,
+    SearchRoundtripStops,
+)
 from .search_tweetsop import (
     SearchTweetsRequestBody,
     SearchTweetsRequestBodyTypedDict,
@@ -209,6 +225,16 @@ from .search_webop import (
 )
 from .security import Security, SecurityTypedDict
 from .servererror import ServerError, ServerErrorData
+from .skyscannerairport import SkyScannerAirport, SkyScannerAirportTypedDict
+from .skyscannercarrier import SkyScannerCarrier, SkyScannerCarrierTypedDict
+from .skyscanneritinerary import SkyScannerItinerary, SkyScannerItineraryTypedDict
+from .skyscannerleg import (
+    Carriers,
+    CarriersTypedDict,
+    SkyScannerLeg,
+    SkyScannerLegTypedDict,
+)
+from .skyscannersegment import SkyScannerSegment, SkyScannerSegmentTypedDict
 from .start_taskop import (
     StartTaskRequestBody,
     StartTaskRequestBodyTypedDict,
@@ -244,6 +270,9 @@ from .zillowproperty import (
 __all__ = [
     "Address",
     "AddressTypedDict",
+    "CabinClass",
+    "Carriers",
+    "CarriersTypedDict",
     "Categories",
     "CategoriesTypedDict",
     "Companies",
@@ -370,6 +399,10 @@ __all__ = [
     "SearchNewsRequestBodyTypedDict",
     "SearchNewsResponseBody",
     "SearchNewsResponseBodyTypedDict",
+    "SearchOneWayRequestBody",
+    "SearchOneWayRequestBodyTypedDict",
+    "SearchOneWayResponseBody",
+    "SearchOneWayResponseBodyTypedDict",
     "SearchPeopleRequestBody",
     "SearchPeopleRequestBodyTypedDict",
     "SearchPeopleResponseBody",
@@ -383,6 +416,12 @@ __all__ = [
     "SearchPropertiesResponseBody",
     "SearchPropertiesResponseBodyTypedDict",
     "SearchPropertiesSortBy",
+    "SearchRoundtripCabinClass",
+    "SearchRoundtripRequestBody",
+    "SearchRoundtripRequestBodyTypedDict",
+    "SearchRoundtripResponseBody",
+    "SearchRoundtripResponseBodyTypedDict",
+    "SearchRoundtripStops",
     "SearchTweetsRequestBody",
     "SearchTweetsRequestBodyTypedDict",
     "SearchTweetsResponseBody",
@@ -400,12 +439,23 @@ __all__ = [
     "Seniorities",
     "ServerError",
     "ServerErrorData",
+    "SkyScannerAirport",
+    "SkyScannerAirportTypedDict",
+    "SkyScannerCarrier",
+    "SkyScannerCarrierTypedDict",
+    "SkyScannerItinerary",
+    "SkyScannerItineraryTypedDict",
+    "SkyScannerLeg",
+    "SkyScannerLegTypedDict",
+    "SkyScannerSegment",
+    "SkyScannerSegmentTypedDict",
     "SortBy",
     "StartTaskRequestBody",
     "StartTaskRequestBodyTypedDict",
     "StartTaskResponseBody",
     "StartTaskResponseBodyTypedDict",
     "Status",
+    "Stops",
     "TimePublished",
     "TotalRounds",
     "TotalRoundsTypedDict",

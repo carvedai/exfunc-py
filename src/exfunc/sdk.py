@@ -10,6 +10,7 @@ from exfunc._hooks import SDKHooks
 from exfunc.google import Google
 from exfunc.linkedin import Linkedin
 from exfunc.navigator import Navigator
+from exfunc.skyscanner import Skyscanner
 from exfunc.twitter import Twitter
 from exfunc.types import OptionalNullable, UNSET
 from exfunc.yelp import Yelp
@@ -31,6 +32,7 @@ class Exfunc(BaseSDK):
     google: Google
     linkedin: Linkedin
     navigator: Navigator
+    skyscanner: Skyscanner
     twitter: Twitter
     yelp: Yelp
     zillow: Zillow
@@ -117,6 +119,7 @@ class Exfunc(BaseSDK):
         self.google = Google(self.sdk_configuration)
         self.linkedin = Linkedin(self.sdk_configuration)
         self.navigator = Navigator(self.sdk_configuration)
+        self.skyscanner = Skyscanner(self.sdk_configuration)
         self.twitter = Twitter(self.sdk_configuration)
         self.yelp = Yelp(self.sdk_configuration)
         self.zillow = Zillow(self.sdk_configuration)

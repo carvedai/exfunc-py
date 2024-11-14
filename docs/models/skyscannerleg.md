@@ -1,0 +1,16 @@
+# SkyScannerLeg
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `origin`                                                             | [Optional[models.SkyScannerAirport]](../models/skyscannerairport.md) | :heavy_minus_sign:                                                   | The airport information                                              |
+| `destination`                                                        | [Optional[models.SkyScannerAirport]](../models/skyscannerairport.md) | :heavy_minus_sign:                                                   | The airport information                                              |
+| `duration_in_minutes`                                                | *Optional[float]*                                                    | :heavy_minus_sign:                                                   | Duration of the leg in minutes                                       |
+| `stop_count`                                                         | *Optional[float]*                                                    | :heavy_minus_sign:                                                   | The number of stops for the leg                                      |
+| `departure_time`                                                     | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The departure time of the leg                                        |
+| `arrival_time`                                                       | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The arrival time of the leg                                          |
+| `time_delta_in_days`                                                 | *Optional[float]*                                                    | :heavy_minus_sign:                                                   | The time delta in days between the departure and the arrival         |
+| `carriers`                                                           | [Optional[models.Carriers]](../models/carriers.md)                   | :heavy_minus_sign:                                                   | The carrier information                                              |
+| `segments`                                                           | List[[models.SkyScannerSegment](../models/skyscannersegment.md)]     | :heavy_minus_sign:                                                   | The list of segments for the leg                                     |

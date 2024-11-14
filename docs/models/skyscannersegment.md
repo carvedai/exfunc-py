@@ -1,0 +1,15 @@
+# SkyScannerSegment
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `origin`                                                             | [Optional[models.SkyScannerAirport]](../models/skyscannerairport.md) | :heavy_minus_sign:                                                   | The airport information                                              |
+| `destination`                                                        | [Optional[models.SkyScannerAirport]](../models/skyscannerairport.md) | :heavy_minus_sign:                                                   | The airport information                                              |
+| `departure_time`                                                     | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The departure time of the segment                                    |
+| `arrival_time`                                                       | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The arrival time of the segment                                      |
+| `duration_in_minutes`                                                | *Optional[float]*                                                    | :heavy_minus_sign:                                                   | Duration of the segment in minutes                                   |
+| `flight_number`                                                      | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Flight number for the segment                                        |
+| `marketing_carrier`                                                  | [Optional[models.SkyScannerCarrier]](../models/skyscannercarrier.md) | :heavy_minus_sign:                                                   | The carrier details                                                  |
+| `operating_carrier`                                                  | [Optional[models.SkyScannerCarrier]](../models/skyscannercarrier.md) | :heavy_minus_sign:                                                   | The carrier details                                                  |

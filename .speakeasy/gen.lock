@@ -1,19 +1,20 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: 9c37acdbb9d07efb78666f5d170a1ff8
+  docChecksum: 5738c460c50fa7800c3e7b91145cb5b0
   docVersion: 1.0.0
-  speakeasyVersion: 1.438.1
-  generationVersion: 2.457.2
-  releaseVersion: 0.3.4
-  configChecksum: e0e450eadc37591367914ea7337a542e
+  speakeasyVersion: 1.439.0
+  generationVersion: 2.457.9
+  releaseVersion: 0.4.6
+  configChecksum: c2d3f61f753eba8357fe4006ace0a3b4
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.6.4
+    constsAndDefaults: 1.0.4
+    core: 5.6.5
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
@@ -40,6 +41,8 @@ generatedFiles:
   - CONTRIBUTING.md
   - USAGE.md
   - docs/models/address.md
+  - docs/models/cabinclass.md
+  - docs/models/carriers.md
   - docs/models/categories.md
   - docs/models/companies.md
   - docs/models/dateposted.md
@@ -109,6 +112,8 @@ generatedFiles:
   - docs/models/searchjobpostingssortby.md
   - docs/models/searchnewsrequestbody.md
   - docs/models/searchnewsresponsebody.md
+  - docs/models/searchonewayrequestbody.md
+  - docs/models/searchonewayresponsebody.md
   - docs/models/searchpeoplerequestbody.md
   - docs/models/searchpeopleresponsebody.md
   - docs/models/searchproductsrequestbody.md
@@ -116,6 +121,10 @@ generatedFiles:
   - docs/models/searchpropertiesrequestbody.md
   - docs/models/searchpropertiesresponsebody.md
   - docs/models/searchpropertiessortby.md
+  - docs/models/searchroundtripcabinclass.md
+  - docs/models/searchroundtriprequestbody.md
+  - docs/models/searchroundtripresponsebody.md
+  - docs/models/searchroundtripstops.md
   - docs/models/searchtweetsrequestbody.md
   - docs/models/searchtweetsresponsebody.md
   - docs/models/searchusersrequestbody.md
@@ -125,10 +134,16 @@ generatedFiles:
   - docs/models/security.md
   - docs/models/seniorities.md
   - docs/models/servererror.md
+  - docs/models/skyscannerairport.md
+  - docs/models/skyscannercarrier.md
+  - docs/models/skyscanneritinerary.md
+  - docs/models/skyscannerleg.md
+  - docs/models/skyscannersegment.md
   - docs/models/sortby.md
   - docs/models/starttaskrequestbody.md
   - docs/models/starttaskresponsebody.md
   - docs/models/status.md
+  - docs/models/stops.md
   - docs/models/timepublished.md
   - docs/models/totalrounds.md
   - docs/models/tweet.md
@@ -145,6 +160,7 @@ generatedFiles:
   - docs/sdks/google/README.md
   - docs/sdks/linkedin/README.md
   - docs/sdks/navigator/README.md
+  - docs/sdks/skyscanner/README.md
   - docs/sdks/twitter/README.md
   - docs/sdks/yelp/README.md
   - docs/sdks/zillow/README.md
@@ -193,14 +209,21 @@ generatedFiles:
   - src/exfunc/models/search_companiesop.py
   - src/exfunc/models/search_job_postingsop.py
   - src/exfunc/models/search_newsop.py
+  - src/exfunc/models/search_one_wayop.py
   - src/exfunc/models/search_peopleop.py
   - src/exfunc/models/search_productsop.py
   - src/exfunc/models/search_propertiesop.py
+  - src/exfunc/models/search_roundtripop.py
   - src/exfunc/models/search_tweetsop.py
   - src/exfunc/models/search_usersop.py
   - src/exfunc/models/search_webop.py
   - src/exfunc/models/security.py
   - src/exfunc/models/servererror.py
+  - src/exfunc/models/skyscannerairport.py
+  - src/exfunc/models/skyscannercarrier.py
+  - src/exfunc/models/skyscanneritinerary.py
+  - src/exfunc/models/skyscannerleg.py
+  - src/exfunc/models/skyscannersegment.py
   - src/exfunc/models/start_taskop.py
   - src/exfunc/models/tweet.py
   - src/exfunc/models/twitteruser.py
@@ -213,6 +236,7 @@ generatedFiles:
   - src/exfunc/py.typed
   - src/exfunc/sdk.py
   - src/exfunc/sdkconfiguration.py
+  - src/exfunc/skyscanner.py
   - src/exfunc/twitter.py
   - src/exfunc/types/__init__.py
   - src/exfunc/types/basemodel.py
@@ -332,3 +356,11 @@ examples:
     speakeasy-default-search-properties:
       requestBody:
         application/json: {"location": "<value>", "listing_status": "for_rent"}
+  search-one-way:
+    speakeasy-default-search-one-way:
+      requestBody:
+        application/json: {"origin": "<value>", "destination": "<value>", "depart_date": "<value>"}
+  search-roundtrip:
+    speakeasy-default-search-roundtrip:
+      requestBody:
+        application/json: {"origin": "<value>", "destination": "<value>", "depart_date": "<value>", "return_date": "<value>"}

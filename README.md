@@ -138,6 +138,11 @@ asyncio.run(main())
 * [start_task](docs/sdks/navigator/README.md#start_task) - Start a web navigator task
 * [scrape](docs/sdks/navigator/README.md#scrape) - Scrape a web page
 
+### [skyscanner](docs/sdks/skyscanner/README.md)
+
+* [search_one_way](docs/sdks/skyscanner/README.md#search_one_way) - Search one-way flights on SkyScanner
+* [search_roundtrip](docs/sdks/skyscanner/README.md#search_roundtrip) - Search roundtrip flights on SkyScanner
+
 ### [twitter](docs/sdks/twitter/README.md)
 
 * [get_tweet](docs/sdks/twitter/README.md#get_tweet) - Get a tweet by ID
