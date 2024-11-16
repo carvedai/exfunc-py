@@ -56,7 +56,7 @@ def get_security(security: Any) -> Tuple[Dict[str, str], Dict[str, List[str]]]:
 
 
 def get_security_from_env(security: Any, security_class: Any) -> Optional[BaseModel]:
-    if security is not None:
+    if security is not None and security.api_key is not None:
         return security
 
     if not issubclass(security_class, BaseModel):

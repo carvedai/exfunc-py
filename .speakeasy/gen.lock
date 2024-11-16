@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.440.1
   generationVersion: 2.460.1
-  releaseVersion: 0.4.7
-  configChecksum: 996ec8b7e0d0d348afbcb065fe14b3fa
+  releaseVersion: 0.4.8
+  configChecksum: b683442bc602cd6e94bb6a0e6dad71bb
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
