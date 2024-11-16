@@ -140,8 +140,7 @@ asyncio.run(main())
 
 ### [skyscanner](docs/sdks/skyscanner/README.md)
 
-* [search_one_way](docs/sdks/skyscanner/README.md#search_one_way) - Search one-way flights on SkyScanner
-* [search_roundtrip](docs/sdks/skyscanner/README.md#search_roundtrip) - Search roundtrip flights on SkyScanner
+* [search_flights](docs/sdks/skyscanner/README.md#search_flights) - Search flights on SkyScanner
 
 ### [twitter](docs/sdks/twitter/README.md)
 

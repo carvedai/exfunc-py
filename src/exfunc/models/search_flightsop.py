@@ -8,13 +8,20 @@ from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class SearchRoundtripStops(str, Enum):
+class FlightType(str, Enum):
+    r"""The type of the flight"""
+
+    ONE_WAY = "one-way"
+    ROUNDTRIP = "roundtrip"
+
+
+class Stops(str, Enum):
     DIRECT = "Direct"
     ONE_STOP = "1 Stop"
     TWO_PLUS_STOPS = "2+ Stops"
 
 
-class SearchRoundtripCabinClass(str, Enum):
+class CabinClass(str, Enum):
     r"""The cabin class filter"""
 
     ECONOMY = "economy"
@@ -23,16 +30,18 @@ class SearchRoundtripCabinClass(str, Enum):
     FIRST = "first"
 
 
-class SearchRoundtripRequestBodyTypedDict(TypedDict):
+class SearchFlightsRequestBodyTypedDict(TypedDict):
     origin: str
     r"""The origin location of the itinerary"""
     destination: str
     r"""The destination location of the itinerary"""
+    flight_type: FlightType
+    r"""The type of the flight"""
     depart_date: str
     r"""The departure date of the itinerary. The format has to be YYYY-MM-DD"""
-    return_date: str
-    r"""The return date of the itinerary. The format has to be YYYY-MM-DD"""
-    stops: NotRequired[List[SearchRoundtripStops]]
+    return_date: NotRequired[str]
+    r"""The return date of the itinerary. The format has to be YYYY-MM-DD. If the flight type is roundtrip, this field is required."""
+    stops: NotRequired[List[Stops]]
     r"""The list of filter values for number of stops"""
     num_adults: NotRequired[float]
     r"""The number of adults for the itinerary"""
@@ -40,7 +49,7 @@ class SearchRoundtripRequestBodyTypedDict(TypedDict):
     r"""The number of children for the itinerary"""
     num_infants: NotRequired[float]
     r"""The number of infants for the itinerary"""
-    cabin_class: NotRequired[SearchRoundtripCabinClass]
+    cabin_class: NotRequired[CabinClass]
     r"""The cabin class filter"""
     include_origin_nearby_airports: NotRequired[bool]
     r"""Boolean to indicate whether to include nearby origin airports in the results or not"""
@@ -48,20 +57,23 @@ class SearchRoundtripRequestBodyTypedDict(TypedDict):
     r"""Boolean to indicate whether to include nearby destination airports in the results or not"""
 
 
-class SearchRoundtripRequestBody(BaseModel):
+class SearchFlightsRequestBody(BaseModel):
     origin: str
     r"""The origin location of the itinerary"""
 
     destination: str
     r"""The destination location of the itinerary"""
 
+    flight_type: FlightType
+    r"""The type of the flight"""
+
     depart_date: str
     r"""The departure date of the itinerary. The format has to be YYYY-MM-DD"""
 
-    return_date: str
-    r"""The return date of the itinerary. The format has to be YYYY-MM-DD"""
+    return_date: Optional[str] = None
+    r"""The return date of the itinerary. The format has to be YYYY-MM-DD. If the flight type is roundtrip, this field is required."""
 
-    stops: Optional[List[SearchRoundtripStops]] = None
+    stops: Optional[List[Stops]] = None
     r"""The list of filter values for number of stops"""
 
     num_adults: Optional[float] = 1
@@ -73,7 +85,7 @@ class SearchRoundtripRequestBody(BaseModel):
     num_infants: Optional[float] = 0
     r"""The number of infants for the itinerary"""
 
-    cabin_class: Optional[SearchRoundtripCabinClass] = None
+    cabin_class: Optional[CabinClass] = None
     r"""The cabin class filter"""
 
     include_origin_nearby_airports: Optional[bool] = False
@@ -83,13 +95,13 @@ class SearchRoundtripRequestBody(BaseModel):
     r"""Boolean to indicate whether to include nearby destination airports in the results or not"""
 
 
-class SearchRoundtripResponseBodyTypedDict(TypedDict):
-    r"""SearchRoundtrip API successful response"""
+class SearchFlightsResponseBodyTypedDict(TypedDict):
+    r"""SearchFlights API successful response"""
 
     itineraries: NotRequired[List[SkyScannerItineraryTypedDict]]
 
 
-class SearchRoundtripResponseBody(BaseModel):
-    r"""SearchRoundtrip API successful response"""
+class SearchFlightsResponseBody(BaseModel):
+    r"""SearchFlights API successful response"""
 
     itineraries: Optional[List[SkyScannerItinerary]] = None

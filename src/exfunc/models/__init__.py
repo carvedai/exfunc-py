@@ -140,6 +140,15 @@ from .search_companiesop import (
     SearchCompaniesResponseBody,
     SearchCompaniesResponseBodyTypedDict,
 )
+from .search_flightsop import (
+    CabinClass,
+    FlightType,
+    SearchFlightsRequestBody,
+    SearchFlightsRequestBodyTypedDict,
+    SearchFlightsResponseBody,
+    SearchFlightsResponseBodyTypedDict,
+    Stops,
+)
 from .search_job_postingsop import (
     DatePosted,
     ExperienceLevel,
@@ -160,14 +169,6 @@ from .search_newsop import (
     SearchNewsResponseBody,
     SearchNewsResponseBodyTypedDict,
     TimePublished,
-)
-from .search_one_wayop import (
-    CabinClass,
-    SearchOneWayRequestBody,
-    SearchOneWayRequestBodyTypedDict,
-    SearchOneWayResponseBody,
-    SearchOneWayResponseBodyTypedDict,
-    Stops,
 )
 from .search_peopleop import (
     SearchPeopleRequestBody,
@@ -193,14 +194,6 @@ from .search_propertiesop import (
     SearchPropertiesResponseBody,
     SearchPropertiesResponseBodyTypedDict,
     SearchPropertiesSortBy,
-)
-from .search_roundtripop import (
-    SearchRoundtripCabinClass,
-    SearchRoundtripRequestBody,
-    SearchRoundtripRequestBodyTypedDict,
-    SearchRoundtripResponseBody,
-    SearchRoundtripResponseBodyTypedDict,
-    SearchRoundtripStops,
 )
 from .search_tweetsop import (
     SearchTweetsRequestBody,
@@ -283,6 +276,7 @@ __all__ = [
     "ExperiencesTypedDict",
     "FeedbackCounts",
     "FeedbackCountsTypedDict",
+    "FlightType",
     "Funding",
     "FundingTypedDict",
     "GetBusinessRequestBody",
@@ -390,6 +384,10 @@ __all__ = [
     "SearchCompaniesRequestBodyTypedDict",
     "SearchCompaniesResponseBody",
     "SearchCompaniesResponseBodyTypedDict",
+    "SearchFlightsRequestBody",
+    "SearchFlightsRequestBodyTypedDict",
+    "SearchFlightsResponseBody",
+    "SearchFlightsResponseBodyTypedDict",
     "SearchJobPostingsRequestBody",
     "SearchJobPostingsRequestBodyTypedDict",
     "SearchJobPostingsResponseBody",
@@ -399,10 +397,6 @@ __all__ = [
     "SearchNewsRequestBodyTypedDict",
     "SearchNewsResponseBody",
     "SearchNewsResponseBodyTypedDict",
-    "SearchOneWayRequestBody",
-    "SearchOneWayRequestBodyTypedDict",
-    "SearchOneWayResponseBody",
-    "SearchOneWayResponseBodyTypedDict",
     "SearchPeopleRequestBody",
     "SearchPeopleRequestBodyTypedDict",
     "SearchPeopleResponseBody",
@@ -416,12 +410,6 @@ __all__ = [
     "SearchPropertiesResponseBody",
     "SearchPropertiesResponseBodyTypedDict",
     "SearchPropertiesSortBy",
-    "SearchRoundtripCabinClass",
-    "SearchRoundtripRequestBody",
-    "SearchRoundtripRequestBodyTypedDict",
-    "SearchRoundtripResponseBody",
-    "SearchRoundtripResponseBodyTypedDict",
-    "SearchRoundtripStops",
     "SearchTweetsRequestBody",
     "SearchTweetsRequestBodyTypedDict",
     "SearchTweetsResponseBody",

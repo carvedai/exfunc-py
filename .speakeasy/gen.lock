@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: 5738c460c50fa7800c3e7b91145cb5b0
+  docChecksum: e50fffe3d6118cbaa69aa3e7db52b497
   docVersion: 1.0.0
-  speakeasyVersion: 1.439.0
-  generationVersion: 2.457.9
-  releaseVersion: 0.4.6
-  configChecksum: c2d3f61f753eba8357fe4006ace0a3b4
+  speakeasyVersion: 1.440.1
+  generationVersion: 2.460.1
+  releaseVersion: 0.4.7
+  configChecksum: 996ec8b7e0d0d348afbcb065fe14b3fa
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    constsAndDefaults: 1.0.4
+    constsAndDefaults: 1.0.5
     core: 5.6.5
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
@@ -49,6 +49,7 @@ generatedFiles:
   - docs/models/experiencelevel.md
   - docs/models/experiences.md
   - docs/models/feedbackcounts.md
+  - docs/models/flighttype.md
   - docs/models/funding.md
   - docs/models/getbusinessrequestbody.md
   - docs/models/getbusinessresponsebody.md
@@ -107,13 +108,13 @@ generatedFiles:
   - docs/models/searchbusinessessortby.md
   - docs/models/searchcompaniesrequestbody.md
   - docs/models/searchcompaniesresponsebody.md
+  - docs/models/searchflightsrequestbody.md
+  - docs/models/searchflightsresponsebody.md
   - docs/models/searchjobpostingsrequestbody.md
   - docs/models/searchjobpostingsresponsebody.md
   - docs/models/searchjobpostingssortby.md
   - docs/models/searchnewsrequestbody.md
   - docs/models/searchnewsresponsebody.md
-  - docs/models/searchonewayrequestbody.md
-  - docs/models/searchonewayresponsebody.md
   - docs/models/searchpeoplerequestbody.md
   - docs/models/searchpeopleresponsebody.md
   - docs/models/searchproductsrequestbody.md
@@ -121,10 +122,6 @@ generatedFiles:
   - docs/models/searchpropertiesrequestbody.md
   - docs/models/searchpropertiesresponsebody.md
   - docs/models/searchpropertiessortby.md
-  - docs/models/searchroundtripcabinclass.md
-  - docs/models/searchroundtriprequestbody.md
-  - docs/models/searchroundtripresponsebody.md
-  - docs/models/searchroundtripstops.md
   - docs/models/searchtweetsrequestbody.md
   - docs/models/searchtweetsresponsebody.md
   - docs/models/searchusersrequestbody.md
@@ -207,13 +204,12 @@ generatedFiles:
   - src/exfunc/models/sdkerror.py
   - src/exfunc/models/search_businessesop.py
   - src/exfunc/models/search_companiesop.py
+  - src/exfunc/models/search_flightsop.py
   - src/exfunc/models/search_job_postingsop.py
   - src/exfunc/models/search_newsop.py
-  - src/exfunc/models/search_one_wayop.py
   - src/exfunc/models/search_peopleop.py
   - src/exfunc/models/search_productsop.py
   - src/exfunc/models/search_propertiesop.py
-  - src/exfunc/models/search_roundtripop.py
   - src/exfunc/models/search_tweetsop.py
   - src/exfunc/models/search_usersop.py
   - src/exfunc/models/search_webop.py
@@ -364,3 +360,7 @@ examples:
     speakeasy-default-search-roundtrip:
       requestBody:
         application/json: {"origin": "<value>", "destination": "<value>", "depart_date": "<value>", "return_date": "<value>"}
+  search-flights:
+    speakeasy-default-search-flights:
+      requestBody:
+        application/json: {"origin": "<value>", "destination": "<value>", "flight_type": "roundtrip", "depart_date": "<value>"}

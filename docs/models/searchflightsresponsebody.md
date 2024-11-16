@@ -1,6 +1,6 @@
-# SearchRoundtripResponseBody
+# SearchFlightsResponseBody
 
-SearchRoundtrip API successful response
+SearchFlights API successful response
 
 
 ## Fields
