@@ -872,7 +872,6 @@
                           },
                           "date_posted": {
                             "type": "string",
-                            "format": "date-time",
                             "description": "Date when the job was posted"
                           },
                           "company_name": {
@@ -2690,6 +2689,7 @@
           },
           "title": {
             "type": "string",
+            "nullable": true,
             "description": "Job title of the person"
           },
           "company_name": {
@@ -2707,7 +2707,8 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "type": "string"
+                  "type": "string",
+                  "nullable": true
                 },
                 "company_name": {
                   "type": "string"
