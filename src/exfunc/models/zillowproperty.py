@@ -55,9 +55,9 @@ class ZillowPropertyTypedDict(TypedDict):
     r"""The physical address of the property"""
     photos: NotRequired[List[str]]
     r"""List of photo URLs for the property"""
-    bathrooms: NotRequired[float]
+    bathrooms: NotRequired[Nullable[float]]
     r"""Number of bathrooms in the property"""
-    bedrooms: NotRequired[int]
+    bedrooms: NotRequired[Nullable[int]]
     r"""Number of bedrooms in the property"""
     living_area: NotRequired[Nullable[float]]
     r"""The living area of the property in square feet"""
@@ -88,10 +88,10 @@ class ZillowProperty(BaseModel):
     photos: Optional[List[str]] = None
     r"""List of photo URLs for the property"""
 
-    bathrooms: Optional[float] = None
+    bathrooms: OptionalNullable[float] = UNSET
     r"""Number of bathrooms in the property"""
 
-    bedrooms: Optional[int] = None
+    bedrooms: OptionalNullable[int] = UNSET
     r"""Number of bedrooms in the property"""
 
     living_area: OptionalNullable[float] = UNSET
@@ -139,6 +139,8 @@ class ZillowProperty(BaseModel):
             "price_history",
         ]
         nullable_fields = [
+            "bathrooms",
+            "bedrooms",
             "living_area",
             "year_built",
             "days_on_zillow",

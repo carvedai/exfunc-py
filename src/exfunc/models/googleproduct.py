@@ -12,7 +12,7 @@ class GoogleProductTypedDict(TypedDict):
     r"""The unique identifier for the product"""
     title: NotRequired[str]
     r"""The title of the product"""
-    description: NotRequired[str]
+    description: NotRequired[Nullable[str]]
     r"""A detailed description of the product"""
     photos: NotRequired[List[str]]
     r"""An array of URLs for the product photos"""
@@ -22,7 +22,7 @@ class GoogleProductTypedDict(TypedDict):
     r"""The average rating of the product"""
     page_url: NotRequired[str]
     r"""The URL link to the product page"""
-    num_reviews: NotRequired[int]
+    num_reviews: NotRequired[Nullable[int]]
     r"""The total number of reviews for the product"""
     reviews_per_rating: NotRequired[Dict[str, int]]
     r"""The number of reviews for each rating level"""
@@ -39,7 +39,7 @@ class GoogleProduct(BaseModel):
     title: Optional[str] = None
     r"""The title of the product"""
 
-    description: Optional[str] = None
+    description: OptionalNullable[str] = UNSET
     r"""A detailed description of the product"""
 
     photos: Optional[List[str]] = None
@@ -54,7 +54,7 @@ class GoogleProduct(BaseModel):
     page_url: Optional[str] = None
     r"""The URL link to the product page"""
 
-    num_reviews: Optional[int] = None
+    num_reviews: OptionalNullable[int] = UNSET
     r"""The total number of reviews for the product"""
 
     reviews_per_rating: Optional[Dict[str, int]] = None
@@ -81,7 +81,7 @@ class GoogleProduct(BaseModel):
             "product_details",
             "product_specs",
         ]
-        nullable_fields = ["attributes", "rating"]
+        nullable_fields = ["description", "attributes", "rating", "num_reviews"]
         null_default_fields = []
 
         serialized = handler(self)
