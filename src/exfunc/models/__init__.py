@@ -126,6 +126,8 @@ from .scrapeop import (
 )
 from .sdkerror import SDKError
 from .search_businessesop import (
+    Businesses,
+    BusinessesTypedDict,
     SearchBusinessesRequestBody,
     SearchBusinessesRequestBodyTypedDict,
     SearchBusinessesResponseBody,
@@ -263,6 +265,8 @@ from .zillowproperty import (
 __all__ = [
     "Address",
     "AddressTypedDict",
+    "Businesses",
+    "BusinessesTypedDict",
     "CabinClass",
     "Carriers",
     "CarriersTypedDict",

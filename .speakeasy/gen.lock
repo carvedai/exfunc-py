@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: b8fffe8ff429dd52b45732075eb6a732
+  docChecksum: eb2c706b2547799aa46276e7adabcf8f
   docVersion: 1.0.0
-  speakeasyVersion: 1.441.0
-  generationVersion: 2.460.1
-  releaseVersion: 0.5.2
-  configChecksum: e47ca8feefb3d2649ded82b152a12e16
+  speakeasyVersion: 1.441.1
+  generationVersion: 2.461.2
+  releaseVersion: 0.5.3
+  configChecksum: 5364e0b9b7af5c31b77bbb22c749a452
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
@@ -40,6 +40,7 @@ generatedFiles:
   - CONTRIBUTING.md
   - USAGE.md
   - docs/models/address.md
+  - docs/models/businesses.md
   - docs/models/cabinclass.md
   - docs/models/carriers.md
   - docs/models/categories.md
