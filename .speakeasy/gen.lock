@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: eb2c706b2547799aa46276e7adabcf8f
+  docChecksum: 7bd2f673017cbd4d4f721e441f139be5
   docVersion: 1.0.0
-  speakeasyVersion: 1.441.1
-  generationVersion: 2.461.2
-  releaseVersion: 0.5.3
-  configChecksum: 5364e0b9b7af5c31b77bbb22c749a452
+  speakeasyVersion: 1.443.0
+  generationVersion: 2.461.4
+  releaseVersion: 0.5.4
+  configChecksum: 5193529a155b6023037703157e0f1de6
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.5
+    core: 5.6.6
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
