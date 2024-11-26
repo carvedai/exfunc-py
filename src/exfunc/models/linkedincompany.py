@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 from exfunc.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import List, Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class TotalRoundsTypedDict(TypedDict):
@@ -62,7 +61,7 @@ class LastRoundTypedDict(TypedDict):
 
     stage: NotRequired[Nullable[str]]
     r"""Stage of last funding round"""
-    date_: NotRequired[Nullable[str]]
+    date_posted: NotRequired[Nullable[str]]
     r"""Date of last funding round"""
     amount: NotRequired[Nullable[str]]
     r"""Amount of last funding round"""
@@ -76,7 +75,7 @@ class LastRound(BaseModel):
     stage: OptionalNullable[str] = UNSET
     r"""Stage of last funding round"""
 
-    date_: Annotated[OptionalNullable[str], pydantic.Field(alias="date")] = UNSET
+    date_posted: OptionalNullable[str] = UNSET
     r"""Date of last funding round"""
 
     amount: OptionalNullable[str] = UNSET
@@ -87,8 +86,8 @@ class LastRound(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["stage", "date", "amount", "url"]
-        nullable_fields = ["stage", "date", "amount", "url"]
+        optional_fields = ["stage", "date_posted", "amount", "url"]
+        nullable_fields = ["stage", "date_posted", "amount", "url"]
         null_default_fields = []
 
         serialized = handler(self)
