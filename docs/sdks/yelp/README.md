@@ -19,17 +19,16 @@ Get business details from Yelp for a given business ID
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.yelp.get_business(request={
+        "business_id": "<id>",
+    })
 
-res = s.yelp.get_business(request={
-    "business_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -62,17 +61,16 @@ Get a list of reviews on Yelp for a given business ID
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.yelp.get_business_reviews(request={
+        "business_id": "<id>",
+    })
 
-res = s.yelp.get_business_reviews(request={
-    "business_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -105,18 +103,17 @@ Search for businesses on Yelp given a query, location, and other criteria
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.yelp.search_businesses(request={
+        "query": "<value>",
+        "location": "<value>",
+    })
 
-res = s.yelp.search_businesses(request={
-    "query": "<value>",
-    "location": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

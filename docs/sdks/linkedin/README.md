@@ -22,17 +22,16 @@ Get LinkedIn company info from a LinkedIn company url
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.linkedin.get_company(request={
+        "company_url": "https://minty-adaptation.biz/",
+    })
 
-res = s.linkedin.get_company(request={
-    "company_url": "https://minty-adaptation.biz/",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -65,17 +64,16 @@ Get LinkedIn job posting info from a LinkedIn job posting url
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.linkedin.get_job_posting(request={
+        "job_posting_url": "https://exalted-comestible.info",
+    })
 
-res = s.linkedin.get_job_posting(request={
-    "job_posting_url": "https://exalted-comestible.info",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -108,17 +106,16 @@ Get LinkedIn person profile info from a LinkedIn person profile url
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.linkedin.get_person(request={
+        "person_url": "https://silky-spring.biz/",
+    })
 
-res = s.linkedin.get_person(request={
-    "person_url": "https://silky-spring.biz/",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -151,15 +148,14 @@ Search for companies on LinkedIn for a given name, locations, and other criteria
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.linkedin.search_companies()
 
-res = s.linkedin.search_companies()
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -192,18 +188,17 @@ Search for job postings on LinkedIn for a given keywords, location, and other cr
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.linkedin.search_job_postings(request={
+        "keywords": "<value>",
+        "location": "<value>",
+    })
 
-res = s.linkedin.search_job_postings(request={
-    "keywords": "<value>",
-    "location": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -236,17 +231,16 @@ Search for people on LinkedIn for a given keywords, locations, and other criteri
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.linkedin.search_people(request={
+        "keywords": "<value>",
+    })
 
-res = s.linkedin.search_people(request={
-    "keywords": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

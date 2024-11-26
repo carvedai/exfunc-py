@@ -4,17 +4,16 @@
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.get_product(request={
+        "product_id": "<id>",
+    })
 
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -27,15 +26,16 @@ from exfunc import Exfunc
 import os
 
 async def main():
-    s = Exfunc(
+    async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
-    )
-    res = await s.google.get_product_async(request={
-        "product_id": "<id>",
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.google.get_product_async(request={
+            "product_id": "<id>",
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```

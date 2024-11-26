@@ -18,17 +18,16 @@ Get property details on Zillow for a given property ID
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.zillow.get_property(request={
+        "property_id": "<id>",
+    })
 
-res = s.zillow.get_property(request={
-    "property_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -62,18 +61,17 @@ import exfunc
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.zillow.search_properties(request={
+        "location": "<value>",
+        "listing_status": exfunc.ListingStatus.FOR_RENT,
+    })
 
-res = s.zillow.search_properties(request={
-    "location": "<value>",
-    "listing_status": exfunc.ListingStatus.FOR_RENT,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

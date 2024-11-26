@@ -66,7 +66,7 @@ class SearchJobPostingsSortBy(str, Enum):
 
 
 class SearchJobPostingsRequestBodyTypedDict(TypedDict):
-    keywords: str
+    keywords: NotRequired[str]
     r"""Keywords to search for in job postings"""
     location: NotRequired[str]
     r"""Location to filter job postings"""
@@ -89,7 +89,7 @@ class SearchJobPostingsRequestBodyTypedDict(TypedDict):
 
 
 class SearchJobPostingsRequestBody(BaseModel):
-    keywords: str
+    keywords: Optional[str] = None
     r"""Keywords to search for in job postings"""
 
     location: Optional[str] = None

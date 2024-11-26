@@ -23,17 +23,16 @@ Get tweet details given a tweet ID
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.twitter.get_tweet(request={
+        "tweet_id": "<id>",
+    })
 
-res = s.twitter.get_tweet(request={
-    "tweet_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -66,15 +65,14 @@ Get user details given a Twitter user ID or username (handle)
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.twitter.get_user()
 
-res = s.twitter.get_user()
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -107,17 +105,16 @@ Get a list of followers given a Twitter username (handle)
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.twitter.get_user_followers(request={
+        "username": "Timmy_Bogan",
+    })
 
-res = s.twitter.get_user_followers(request={
-    "username": "Timmy_Bogan",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -150,17 +147,16 @@ Get a list of followings given a Twitter username (handle)
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.twitter.get_user_followings(request={
+        "username": "Nathaniel84",
+    })
 
-res = s.twitter.get_user_followings(request={
-    "username": "Nathaniel84",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -193,17 +189,16 @@ Get a list of tweets given a Twitter username (handle)
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.twitter.get_user_tweets(request={
+        "username": "Fatima_Mosciski",
+    })
 
-res = s.twitter.get_user_tweets(request={
-    "username": "Fatima_Mosciski",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -236,17 +231,16 @@ Search tweets on Twitter for a given query
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.twitter.search_tweets(request={
+        "query": "<value>",
+    })
 
-res = s.twitter.search_tweets(request={
-    "query": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -279,17 +273,16 @@ Search users on Twitter for a given query
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.twitter.search_users(request={
+        "query": "<value>",
+    })
 
-res = s.twitter.search_users(request={
-    "query": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

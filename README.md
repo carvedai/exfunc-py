@@ -72,17 +72,16 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.get_product(request={
+        "product_id": "<id>",
+    })
 
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 ```
 
 </br>
@@ -94,15 +93,16 @@ from exfunc import Exfunc
 import os
 
 async def main():
-    s = Exfunc(
+    async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
-    )
-    res = await s.google.get_product_async(request={
-        "product_id": "<id>",
-    })
-    if res is not None:
-        # handle response
-        pass
+    ) as s:
+        res = await s.google.get_product_async(request={
+            "product_id": "<id>",
+        })
+
+        if res is not None:
+            # handle response
+            pass
 
 asyncio.run(main())
 ```
@@ -177,18 +177,17 @@ from exfunc import Exfunc
 from exfunc.utils import BackoffStrategy, RetryConfig
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.get_product(request={
+        "product_id": "<id>",
+    },
+        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-res = s.google.get_product(request={
-    "product_id": "<id>",
-},
-    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -198,18 +197,17 @@ from exfunc import Exfunc
 from exfunc.utils import BackoffStrategy, RetryConfig
 import os
 
-s = Exfunc(
+with Exfunc(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.get_product(request={
+        "product_id": "<id>",
+    })
 
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Retries [retries] -->
@@ -242,29 +240,28 @@ When custom error responses are specified for an operation, the SDK may also rai
 from exfunc import Exfunc, models
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = None
+    try:
+        res = s.google.get_product(request={
+            "product_id": "<id>",
+        })
 
-res = None
-try:
-    res = s.google.get_product(request={
-        "product_id": "<id>",
-    })
+        if res is not None:
+            # handle response
+            pass
 
-    if res is not None:
-        # handle response
-        pass
-
-except models.UserError as e:
-    # handle e.data: models.UserErrorData
-    raise(e)
-except models.ServerError as e:
-    # handle e.data: models.ServerErrorData
-    raise(e)
-except models.SDKError as e:
-    # handle exception
-    raise(e)
+    except models.UserError as e:
+        # handle e.data: models.UserErrorData
+        raise(e)
+    except models.ServerError as e:
+        # handle e.data: models.ServerErrorData
+        raise(e)
+    except models.SDKError as e:
+        # handle exception
+        raise(e)
 ```
 <!-- End Error Handling [errors] -->
 
@@ -365,17 +362,16 @@ To authenticate with the API the `api_key` parameter must be set when initializi
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.get_product(request={
+        "product_id": "<id>",
+    })
 
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 <!-- End Authentication [security] -->

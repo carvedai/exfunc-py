@@ -25,7 +25,7 @@ class Seniorities(str, Enum):
 
 
 class SearchPeopleRequestBodyTypedDict(TypedDict):
-    keywords: str
+    keywords: NotRequired[str]
     r"""Keywords to search for in people profiles"""
     locations: NotRequired[List[str]]
     r"""List of locations to filter the search"""
@@ -44,7 +44,7 @@ class SearchPeopleRequestBodyTypedDict(TypedDict):
 
 
 class SearchPeopleRequestBody(BaseModel):
-    keywords: str
+    keywords: Optional[str] = None
     r"""Keywords to search for in people profiles"""
 
     locations: Optional[List[str]] = None

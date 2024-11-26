@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 8c41607e-5a82-444d-9d7a-c457a7136d7a
 management:
-  docChecksum: 7bd2f673017cbd4d4f721e441f139be5
+  docChecksum: e4663b34b088ba0a46415967c4def06c
   docVersion: 1.0.0
-  speakeasyVersion: 1.443.0
-  generationVersion: 2.461.4
-  releaseVersion: 0.5.4
-  configChecksum: 5193529a155b6023037703157e0f1de6
+  speakeasyVersion: 1.446.0
+  generationVersion: 2.462.0
+  releaseVersion: 0.5.5
+  configChecksum: 9a4f6d66515abeb9f02b9d93d61b03d4
   repoURL: https://github.com/carvedai/exfunc-py.git
   installationURL: https://github.com/carvedai/exfunc-py.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.6.6
+    core: 5.6.8
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
@@ -364,3 +364,4 @@ examples:
     speakeasy-default-search-flights:
       requestBody:
         application/json: {"origin": "<value>", "destination": "<value>", "flight_type": "roundtrip", "depart_date": "<value>"}
+generatedTests: {}

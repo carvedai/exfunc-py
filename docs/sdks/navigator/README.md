@@ -19,17 +19,16 @@ Get web navigator task results for a given task ID
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.navigator.get_task(request={
+        "task_id": "<id>",
+    })
 
-res = s.navigator.get_task(request={
-    "task_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -62,18 +61,17 @@ Start a web navigator task for a given url and objective
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.navigator.start_task(request={
+        "url": "https://narrow-jump.net",
+        "objective": "<value>",
+    })
 
-res = s.navigator.start_task(request={
-    "url": "https://narrow-jump.net",
-    "objective": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -106,17 +104,16 @@ Scrape a web page for a given url
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.navigator.scrape(request={
+        "url": "https://hasty-promise.com",
+    })
 
-res = s.navigator.scrape(request={
-    "url": "https://hasty-promise.com",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

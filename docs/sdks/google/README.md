@@ -21,17 +21,16 @@ Get product details (title, description, rating, etc.) from Google given product
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.get_product(request={
+        "product_id": "<id>",
+    })
 
-res = s.google.get_product(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -64,17 +63,16 @@ Get product reviews (title, author, source, rating, etc.) from Google given prod
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.get_product_reviews(request={
+        "product_id": "<id>",
+    })
 
-res = s.google.get_product_reviews(request={
-    "product_id": "<id>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -107,17 +105,16 @@ Search news articles on Google for a given query
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.search_news(request={
+        "query": "<value>",
+    })
 
-res = s.google.search_news(request={
-    "query": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -150,17 +147,16 @@ Search products on Google for a given query
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.search_products(request={
+        "query": "<value>",
+    })
 
-res = s.google.search_products(request={
-    "query": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -193,17 +189,16 @@ Search web on Google for a given query
 from exfunc import Exfunc
 import os
 
-s = Exfunc(
+with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-)
+) as s:
+    res = s.google.search_web(request={
+        "query": "<value>",
+    })
 
-res = s.google.search_web(request={
-    "query": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

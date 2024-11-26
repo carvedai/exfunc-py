@@ -781,7 +781,7 @@ class Linkedin(BaseSDK):
         request: Union[
             models.SearchJobPostingsRequestBody,
             models.SearchJobPostingsRequestBodyTypedDict,
-        ],
+        ] = models.SearchJobPostingsRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -820,7 +820,11 @@ class Linkedin(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SearchJobPostingsRequestBody
+                request,
+                False,
+                True,
+                "json",
+                Optional[models.SearchJobPostingsRequestBody],
             ),
             timeout_ms=timeout_ms,
         )
@@ -878,7 +882,7 @@ class Linkedin(BaseSDK):
         request: Union[
             models.SearchJobPostingsRequestBody,
             models.SearchJobPostingsRequestBodyTypedDict,
-        ],
+        ] = models.SearchJobPostingsRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -917,7 +921,11 @@ class Linkedin(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SearchJobPostingsRequestBody
+                request,
+                False,
+                True,
+                "json",
+                Optional[models.SearchJobPostingsRequestBody],
             ),
             timeout_ms=timeout_ms,
         )
@@ -974,7 +982,7 @@ class Linkedin(BaseSDK):
         *,
         request: Union[
             models.SearchPeopleRequestBody, models.SearchPeopleRequestBodyTypedDict
-        ],
+        ] = models.SearchPeopleRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1013,7 +1021,7 @@ class Linkedin(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SearchPeopleRequestBody
+                request, False, True, "json", Optional[models.SearchPeopleRequestBody]
             ),
             timeout_ms=timeout_ms,
         )
@@ -1068,7 +1076,7 @@ class Linkedin(BaseSDK):
         *,
         request: Union[
             models.SearchPeopleRequestBody, models.SearchPeopleRequestBodyTypedDict
-        ],
+        ] = models.SearchPeopleRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1107,7 +1115,7 @@ class Linkedin(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SearchPeopleRequestBody
+                request, False, True, "json", Optional[models.SearchPeopleRequestBody]
             ),
             timeout_ms=timeout_ms,
         )
