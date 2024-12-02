@@ -19,16 +19,22 @@ Exfunc Python SDK is a library that allows you to easily take web actions on web
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Exfunc Python SDK](#exfunc-python-sdk)
+  * [SDK Installation](#sdk-installation)
+  * [IDE Support](#ide-support)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [IDE Support](#ide-support)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -69,14 +75,15 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 ### Example
 
 ```python
+# Synchronous Example
 from exfunc import Exfunc
 import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
 ) as s:
-    res = s.google.get_product(request={
-        "product_id": "<id>",
+    res = s.google.get_job_posting(request={
+        "job_posting_id": "<id>",
     })
 
     if res is not None:
@@ -88,6 +95,7 @@ with Exfunc(
 
 The same SDK client can also be used to make asychronous requests by importing asyncio.
 ```python
+# Asynchronous Example
 import asyncio
 from exfunc import Exfunc
 import os
@@ -96,8 +104,8 @@ async def main():
     async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
     ) as s:
-        res = await s.google.get_product_async(request={
-            "product_id": "<id>",
+        res = await s.google.get_job_posting_async(request={
+            "job_posting_id": "<id>",
         })
 
         if res is not None:
@@ -117,8 +125,10 @@ asyncio.run(main())
 
 ### [google](docs/sdks/google/README.md)
 
+* [get_job_posting](docs/sdks/google/README.md#get_job_posting) - Get job posting details from Google
 * [get_product](docs/sdks/google/README.md#get_product) - Get product details from Google
 * [get_product_reviews](docs/sdks/google/README.md#get_product_reviews) - Get product reviews from Google
+* [search_job_postings](docs/sdks/google/README.md#search_job_postings) - Search job postings on Google
 * [search_news](docs/sdks/google/README.md#search_news) - Search news articles on Google
 * [search_products](docs/sdks/google/README.md#search_products) - Search products on Google
 * [search_web](docs/sdks/google/README.md#search_web) - Search web on Google
@@ -180,8 +190,8 @@ import os
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
 ) as s:
-    res = s.google.get_product(request={
-        "product_id": "<id>",
+    res = s.google.get_job_posting(request={
+        "job_posting_id": "<id>",
     },
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
@@ -201,8 +211,8 @@ with Exfunc(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     api_key=os.getenv("EXFUNC_API_KEY", ""),
 ) as s:
-    res = s.google.get_product(request={
-        "product_id": "<id>",
+    res = s.google.get_job_posting(request={
+        "job_posting_id": "<id>",
     })
 
     if res is not None:
@@ -226,7 +236,7 @@ By default, an API error will raise a models.SDKError exception, which has the f
 | `.raw_response` | *httpx.Response* | The raw HTTP response |
 | `.body`         | *str*            | The response content  |
 
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get_product_async` method may raise the following exceptions:
+When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get_job_posting_async` method may raise the following exceptions:
 
 | Error Type         | Status Code | Content Type     |
 | ------------------ | ----------- | ---------------- |
@@ -245,8 +255,8 @@ with Exfunc(
 ) as s:
     res = None
     try:
-        res = s.google.get_product(request={
-            "product_id": "<id>",
+        res = s.google.get_job_posting(request={
+            "job_posting_id": "<id>",
         })
 
         if res is not None:
@@ -264,6 +274,31 @@ with Exfunc(
         raise(e)
 ```
 <!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+from exfunc import Exfunc
+import os
+
+with Exfunc(
+    server_url="https://api.exfunc.com",
+    api_key=os.getenv("EXFUNC_API_KEY", ""),
+) as s:
+    res = s.google.get_job_posting(request={
+        "job_posting_id": "<id>",
+    })
+
+    if res is not None:
+        # handle response
+        pass
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
@@ -365,8 +400,8 @@ import os
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
 ) as s:
-    res = s.google.get_product(request={
-        "product_id": "<id>",
+    res = s.google.get_job_posting(request={
+        "job_posting_id": "<id>",
     })
 
     if res is not None:

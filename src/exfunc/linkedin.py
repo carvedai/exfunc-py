@@ -14,14 +14,14 @@ class Linkedin(BaseSDK):
         *,
         request: Union[
             models.GetCompanyRequestBody, models.GetCompanyRequestBodyTypedDict
-        ],
+        ] = models.GetCompanyRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
     ) -> models.GetCompanyResponseBody:
         r"""Get LinkedIn company info
 
-        Get LinkedIn company info from a LinkedIn company url
+        Get LinkedIn company info from either a LinkedIn company url or company website url. Only one is required.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -53,7 +53,7 @@ class Linkedin(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.GetCompanyRequestBody
+                request, False, True, "json", Optional[models.GetCompanyRequestBody]
             ),
             timeout_ms=timeout_ms,
         )
@@ -108,14 +108,14 @@ class Linkedin(BaseSDK):
         *,
         request: Union[
             models.GetCompanyRequestBody, models.GetCompanyRequestBodyTypedDict
-        ],
+        ] = models.GetCompanyRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
     ) -> models.GetCompanyResponseBody:
         r"""Get LinkedIn company info
 
-        Get LinkedIn company info from a LinkedIn company url
+        Get LinkedIn company info from either a LinkedIn company url or company website url. Only one is required.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -147,7 +147,7 @@ class Linkedin(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.GetCompanyRequestBody
+                request, False, True, "json", Optional[models.GetCompanyRequestBody]
             ),
             timeout_ms=timeout_ms,
         )

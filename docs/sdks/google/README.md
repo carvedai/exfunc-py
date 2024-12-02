@@ -5,11 +5,55 @@
 
 ### Available Operations
 
+* [get_job_posting](#get_job_posting) - Get job posting details from Google
 * [get_product](#get_product) - Get product details from Google
 * [get_product_reviews](#get_product_reviews) - Get product reviews from Google
+* [search_job_postings](#search_job_postings) - Search job postings on Google
 * [search_news](#search_news) - Search news articles on Google
 * [search_products](#search_products) - Search products on Google
 * [search_web](#search_web) - Search web on Google
+
+## get_job_posting
+
+Get job posting details from Google given job posting ID
+
+### Example Usage
+
+```python
+from exfunc import Exfunc
+import os
+
+with Exfunc(
+    api_key=os.getenv("EXFUNC_API_KEY", ""),
+) as s:
+    res = s.google.get_job_posting(request={
+        "job_posting_id": "<id>",
+    })
+
+    if res is not None:
+        # handle response
+        pass
+
+```
+
+### Parameters
+
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [models.GoogleGetJobPostingRequestBody](../../models/googlegetjobpostingrequestbody.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
+| `retries`                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                        | :heavy_minus_sign:                                                                      | Configuration to override the default retry behavior of the client.                     |
+
+### Response
+
+**[models.GoogleGetJobPostingResponseBody](../../models/googlegetjobpostingresponsebody.md)**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| models.UserError   | 400                | application/json   |
+| models.ServerError | 500                | application/json   |
+| models.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## get_product
 
@@ -86,6 +130,48 @@ with Exfunc(
 ### Response
 
 **[models.GetProductReviewsResponseBody](../../models/getproductreviewsresponsebody.md)**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| models.UserError   | 400                | application/json   |
+| models.ServerError | 500                | application/json   |
+| models.SDKError    | 4XX, 5XX           | \*/\*              |
+
+## search_job_postings
+
+Search job postings on Google for a given query
+
+### Example Usage
+
+```python
+from exfunc import Exfunc
+import os
+
+with Exfunc(
+    api_key=os.getenv("EXFUNC_API_KEY", ""),
+) as s:
+    res = s.google.search_job_postings(request={
+        "query": "<value>",
+    })
+
+    if res is not None:
+        # handle response
+        pass
+
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [models.GoogleSearchJobPostingsRequestBody](../../models/googlesearchjobpostingsrequestbody.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| `retries`                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |
+
+### Response
+
+**[models.GoogleSearchJobPostingsResponseBody](../../models/googlesearchjobpostingsresponsebody.md)**
 
 ### Errors
 

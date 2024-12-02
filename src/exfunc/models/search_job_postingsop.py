@@ -7,7 +7,7 @@ from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class DatePosted(str, Enum):
+class SearchJobPostingsDatePosted(str, Enum):
     r"""Filter for job postings based on when they were posted"""
 
     ANY_TIME = "Any time"
@@ -70,7 +70,7 @@ class SearchJobPostingsRequestBodyTypedDict(TypedDict):
     r"""Keywords to search for in job postings"""
     location: NotRequired[str]
     r"""Location to filter job postings"""
-    date_posted: NotRequired[DatePosted]
+    date_posted: NotRequired[SearchJobPostingsDatePosted]
     r"""Filter for job postings based on when they were posted"""
     salary: NotRequired[Salary]
     r"""Salary range to filter job postings"""
@@ -95,7 +95,7 @@ class SearchJobPostingsRequestBody(BaseModel):
     location: Optional[str] = None
     r"""Location to filter job postings"""
 
-    date_posted: Optional[DatePosted] = None
+    date_posted: Optional[SearchJobPostingsDatePosted] = None
     r"""Filter for job postings based on when they were posted"""
 
     salary: Optional[Salary] = None

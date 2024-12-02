@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 from exfunc.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class ZillowPriceHistoryEventTypedDict(TypedDict):
-    date_: NotRequired[str]
+    date_posted: NotRequired[str]
     r"""The date of the price change"""
     price: NotRequired[Nullable[float]]
     r"""The price of the property at the given date"""
@@ -28,7 +27,7 @@ class ZillowPriceHistoryEventTypedDict(TypedDict):
 
 
 class ZillowPriceHistoryEvent(BaseModel):
-    date_: Annotated[Optional[str], pydantic.Field(alias="date")] = None
+    date_posted: Optional[str] = None
     r"""The date of the price change"""
 
     price: OptionalNullable[float] = UNSET
@@ -55,7 +54,7 @@ class ZillowPriceHistoryEvent(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
-            "date",
+            "date_posted",
             "price",
             "time_epoch",
             "price_per_square_foot",

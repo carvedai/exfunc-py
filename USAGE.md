@@ -7,8 +7,8 @@ import os
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
 ) as s:
-    res = s.google.get_product(request={
-        "product_id": "<id>",
+    res = s.google.get_job_posting(request={
+        "job_posting_id": "<id>",
     })
 
     if res is not None:
@@ -29,8 +29,8 @@ async def main():
     async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
     ) as s:
-        res = await s.google.get_product_async(request={
-            "product_id": "<id>",
+        res = await s.google.get_job_posting_async(request={
+            "job_posting_id": "<id>",
         })
 
         if res is not None:

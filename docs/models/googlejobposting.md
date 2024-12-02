@@ -1,0 +1,18 @@
+# GoogleJobPosting
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `id`                                                                 | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The ID of the job posting                                            |
+| `url`                                                                | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The URL link to the Google job posting                               |
+| `title`                                                              | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The title of the job posting                                         |
+| `location`                                                           | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The location of the job posting                                      |
+| `description`                                                        | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Detailed description of the job posting                              |
+| `job_type`                                                           | *OptionalNullable[str]*                                              | :heavy_minus_sign:                                                   | Type of job (e.g., Full-time, Part-time)                             |
+| `date_posted`                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | Date when the job was posted                                         |
+| `publisher_name`                                                     | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Name of the publisher of the job posting                             |
+| `publisher_url`                                                      | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | URL of the publisher job posting                                     |
+| `company_name`                                                       | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Name of the company offering the job                                 |
+| `company_website_url`                                                | *OptionalNullable[str]*                                              | :heavy_minus_sign:                                                   | URL to the company's website                                         |

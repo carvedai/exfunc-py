@@ -8,13 +8,18 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class GetCompanyRequestBodyTypedDict(TypedDict):
-    company_url: str
+    company_url: NotRequired[str]
     r"""The LinkedIn URL of the company to enrich"""
+    company_website_url: NotRequired[str]
+    r"""The website URL of the company to enrich"""
 
 
 class GetCompanyRequestBody(BaseModel):
-    company_url: str
+    company_url: Optional[str] = None
     r"""The LinkedIn URL of the company to enrich"""
+
+    company_website_url: Optional[str] = None
+    r"""The website URL of the company to enrich"""
 
 
 class GetCompanyResponseBodyTypedDict(TypedDict):

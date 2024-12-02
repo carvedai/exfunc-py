@@ -85,6 +85,21 @@ from .getuserfollowingsop import (
     GetUserFollowingsResponseBody,
     GetUserFollowingsResponseBodyTypedDict,
 )
+from .google_get_job_postingop import (
+    GoogleGetJobPostingRequestBody,
+    GoogleGetJobPostingRequestBodyTypedDict,
+    GoogleGetJobPostingResponseBody,
+    GoogleGetJobPostingResponseBodyTypedDict,
+)
+from .google_search_job_postingsop import (
+    DatePosted,
+    GoogleSearchJobPostingsRequestBody,
+    GoogleSearchJobPostingsRequestBodyTypedDict,
+    GoogleSearchJobPostingsResponseBody,
+    GoogleSearchJobPostingsResponseBodyTypedDict,
+    JobTypes,
+)
+from .googlejobposting import GoogleJobPosting, GoogleJobPostingTypedDict
 from .googlenews import GoogleNews, GoogleNewsTypedDict
 from .googleproduct import GoogleProduct, GoogleProductTypedDict
 from .googleproductreview import GoogleProductReview, GoogleProductReviewTypedDict
@@ -152,12 +167,12 @@ from .search_flightsop import (
     Stops,
 )
 from .search_job_postingsop import (
-    DatePosted,
     ExperienceLevel,
     JobPostings,
     JobPostingsTypedDict,
     JobType,
     Salary,
+    SearchJobPostingsDatePosted,
     SearchJobPostingsRequestBody,
     SearchJobPostingsRequestBodyTypedDict,
     SearchJobPostingsResponseBody,
@@ -340,17 +355,28 @@ __all__ = [
     "GetUserTweetsRequestBodyTypedDict",
     "GetUserTweetsResponseBody",
     "GetUserTweetsResponseBodyTypedDict",
+    "GoogleGetJobPostingRequestBody",
+    "GoogleGetJobPostingRequestBodyTypedDict",
+    "GoogleGetJobPostingResponseBody",
+    "GoogleGetJobPostingResponseBodyTypedDict",
+    "GoogleJobPosting",
+    "GoogleJobPostingTypedDict",
     "GoogleNews",
     "GoogleNewsTypedDict",
     "GoogleProduct",
     "GoogleProductReview",
     "GoogleProductReviewTypedDict",
     "GoogleProductTypedDict",
+    "GoogleSearchJobPostingsRequestBody",
+    "GoogleSearchJobPostingsRequestBodyTypedDict",
+    "GoogleSearchJobPostingsResponseBody",
+    "GoogleSearchJobPostingsResponseBodyTypedDict",
     "Investors",
     "InvestorsTypedDict",
     "JobPostings",
     "JobPostingsTypedDict",
     "JobType",
+    "JobTypes",
     "LastRound",
     "LastRoundTypedDict",
     "LinkedInCompany",
@@ -392,6 +418,7 @@ __all__ = [
     "SearchFlightsRequestBodyTypedDict",
     "SearchFlightsResponseBody",
     "SearchFlightsResponseBodyTypedDict",
+    "SearchJobPostingsDatePosted",
     "SearchJobPostingsRequestBody",
     "SearchJobPostingsRequestBodyTypedDict",
     "SearchJobPostingsResponseBody",
