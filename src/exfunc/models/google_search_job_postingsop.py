@@ -38,8 +38,8 @@ class GoogleSearchJobPostingsRequestBodyTypedDict(TypedDict):
     r"""Job types to filter (e.g., Full-time, Part-time)"""
     page: NotRequired[int]
     r"""Page number for pagination (default is 1)"""
-    per_page: NotRequired[int]
-    r"""Number of news articles to return per page (default is 10)"""
+    num_pages: NotRequired[int]
+    r"""Number of pages to return, starting from page (default is 1)"""
 
 
 class GoogleSearchJobPostingsRequestBody(BaseModel):
@@ -61,8 +61,8 @@ class GoogleSearchJobPostingsRequestBody(BaseModel):
     page: Optional[int] = None
     r"""Page number for pagination (default is 1)"""
 
-    per_page: Optional[int] = None
-    r"""Number of news articles to return per page (default is 10)"""
+    num_pages: Optional[int] = None
+    r"""Number of pages to return, starting from page (default is 1)"""
 
 
 class GoogleSearchJobPostingsResponseBodyTypedDict(TypedDict):
