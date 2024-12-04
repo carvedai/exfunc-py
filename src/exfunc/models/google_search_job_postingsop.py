@@ -30,6 +30,8 @@ class GoogleSearchJobPostingsRequestBodyTypedDict(TypedDict):
     r"""The search query for job postings"""
     location: NotRequired[str]
     r"""Location to filter job postings"""
+    job_source: NotRequired[str]
+    r"""Source (publisher) to filter job postings. If not provided, postings from all sources will be retrieved"""
     country_code: NotRequired[str]
     r"""The country code to filter job postings"""
     date_posted: NotRequired[DatePosted]
@@ -49,6 +51,9 @@ class GoogleSearchJobPostingsRequestBody(BaseModel):
     location: Optional[str] = None
     r"""Location to filter job postings"""
 
+    job_source: Optional[str] = None
+    r"""Source (publisher) to filter job postings. If not provided, postings from all sources will be retrieved"""
+
     country_code: Optional[str] = "us"
     r"""The country code to filter job postings"""
 
@@ -58,10 +63,10 @@ class GoogleSearchJobPostingsRequestBody(BaseModel):
     job_types: Optional[List[JobTypes]] = None
     r"""Job types to filter (e.g., Full-time, Part-time)"""
 
-    page: Optional[int] = None
+    page: Optional[int] = 1
     r"""Page number for pagination (default is 1)"""
 
-    num_pages: Optional[int] = None
+    num_pages: Optional[int] = 1
     r"""Number of pages to return, starting from page (default is 1)"""
 
 
