@@ -21,14 +21,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.navigator.get_task(request={
+) as exfunc:
+
+    res = exfunc.navigator.get_task(request={
         "task_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -63,15 +63,15 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.navigator.start_task(request={
+) as exfunc:
+
+    res = exfunc.navigator.start_task(request={
         "url": "https://narrow-jump.net",
         "objective": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -106,14 +106,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.navigator.scrape(request={
+) as exfunc:
+
+    res = exfunc.navigator.scrape(request={
         "url": "https://hasty-promise.com",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

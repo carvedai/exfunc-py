@@ -85,6 +85,21 @@ from .getuserfollowingsop import (
     GetUserFollowingsResponseBody,
     GetUserFollowingsResponseBodyTypedDict,
 )
+from .glassdoor_search_job_postingsop import (
+    DatePosted,
+    GlassdoorSearchJobPostingsRequestBody,
+    GlassdoorSearchJobPostingsRequestBodyTypedDict,
+    GlassdoorSearchJobPostingsResponseBody,
+    GlassdoorSearchJobPostingsResponseBodyTypedDict,
+)
+from .glassdoorjobposting import (
+    GlassdoorJobPosting,
+    GlassdoorJobPostingTypedDict,
+    Percentiles,
+    PercentilesTypedDict,
+    Salary,
+    SalaryTypedDict,
+)
 from .google_get_job_postingop import (
     GoogleGetJobPostingRequestBody,
     GoogleGetJobPostingRequestBodyTypedDict,
@@ -92,7 +107,7 @@ from .google_get_job_postingop import (
     GoogleGetJobPostingResponseBodyTypedDict,
 )
 from .google_search_job_postingsop import (
-    DatePosted,
+    GoogleSearchJobPostingsDatePosted,
     GoogleSearchJobPostingsRequestBody,
     GoogleSearchJobPostingsRequestBodyTypedDict,
     GoogleSearchJobPostingsResponseBody,
@@ -103,6 +118,21 @@ from .googlejobposting import GoogleJobPosting, GoogleJobPostingTypedDict
 from .googlenews import GoogleNews, GoogleNewsTypedDict
 from .googleproduct import GoogleProduct, GoogleProductTypedDict
 from .googleproductreview import GoogleProductReview, GoogleProductReviewTypedDict
+from .indeed_search_job_postingsop import (
+    IndeedSearchJobPostingsDatePosted,
+    IndeedSearchJobPostingsRequestBody,
+    IndeedSearchJobPostingsRequestBodyTypedDict,
+    IndeedSearchJobPostingsResponseBody,
+    IndeedSearchJobPostingsResponseBodyTypedDict,
+)
+from .indeedjobposting import (
+    IndeedJobPosting,
+    IndeedJobPostingPercentiles,
+    IndeedJobPostingPercentilesTypedDict,
+    IndeedJobPostingSalary,
+    IndeedJobPostingSalaryTypedDict,
+    IndeedJobPostingTypedDict,
+)
 from .linkedincompany import (
     Funding,
     FundingTypedDict,
@@ -171,12 +201,12 @@ from .search_job_postingsop import (
     JobPostings,
     JobPostingsTypedDict,
     JobType,
-    Salary,
     SearchJobPostingsDatePosted,
     SearchJobPostingsRequestBody,
     SearchJobPostingsRequestBodyTypedDict,
     SearchJobPostingsResponseBody,
     SearchJobPostingsResponseBodyTypedDict,
+    SearchJobPostingsSalary,
     SearchJobPostingsSortBy,
     WorkType,
 )
@@ -355,6 +385,12 @@ __all__ = [
     "GetUserTweetsRequestBodyTypedDict",
     "GetUserTweetsResponseBody",
     "GetUserTweetsResponseBodyTypedDict",
+    "GlassdoorJobPosting",
+    "GlassdoorJobPostingTypedDict",
+    "GlassdoorSearchJobPostingsRequestBody",
+    "GlassdoorSearchJobPostingsRequestBodyTypedDict",
+    "GlassdoorSearchJobPostingsResponseBody",
+    "GlassdoorSearchJobPostingsResponseBodyTypedDict",
     "GoogleGetJobPostingRequestBody",
     "GoogleGetJobPostingRequestBodyTypedDict",
     "GoogleGetJobPostingResponseBody",
@@ -367,10 +403,22 @@ __all__ = [
     "GoogleProductReview",
     "GoogleProductReviewTypedDict",
     "GoogleProductTypedDict",
+    "GoogleSearchJobPostingsDatePosted",
     "GoogleSearchJobPostingsRequestBody",
     "GoogleSearchJobPostingsRequestBodyTypedDict",
     "GoogleSearchJobPostingsResponseBody",
     "GoogleSearchJobPostingsResponseBodyTypedDict",
+    "IndeedJobPosting",
+    "IndeedJobPostingPercentiles",
+    "IndeedJobPostingPercentilesTypedDict",
+    "IndeedJobPostingSalary",
+    "IndeedJobPostingSalaryTypedDict",
+    "IndeedJobPostingTypedDict",
+    "IndeedSearchJobPostingsDatePosted",
+    "IndeedSearchJobPostingsRequestBody",
+    "IndeedSearchJobPostingsRequestBodyTypedDict",
+    "IndeedSearchJobPostingsResponseBody",
+    "IndeedSearchJobPostingsResponseBodyTypedDict",
     "Investors",
     "InvestorsTypedDict",
     "JobPostings",
@@ -392,6 +440,8 @@ __all__ = [
     "MinNumBedrooms",
     "NavigatorTask",
     "NavigatorTaskTypedDict",
+    "Percentiles",
+    "PercentilesTypedDict",
     "ProductCondition",
     "Request",
     "RequestTypedDict",
@@ -401,6 +451,7 @@ __all__ = [
     "ResultsTypedDict",
     "SDKError",
     "Salary",
+    "SalaryTypedDict",
     "ScrapeRequestBody",
     "ScrapeRequestBodyTypedDict",
     "ScrapeResponseBody",
@@ -423,6 +474,7 @@ __all__ = [
     "SearchJobPostingsRequestBodyTypedDict",
     "SearchJobPostingsResponseBody",
     "SearchJobPostingsResponseBodyTypedDict",
+    "SearchJobPostingsSalary",
     "SearchJobPostingsSortBy",
     "SearchNewsRequestBody",
     "SearchNewsRequestBodyTypedDict",

@@ -3,7 +3,7 @@
 import importlib.metadata
 
 __title__: str = "exfunc"
-__version__: str = "0.5.14"
+__version__: str = "0.7.0"
 
 try:
     if __package__ is not None:

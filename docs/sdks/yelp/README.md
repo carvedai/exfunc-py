@@ -21,14 +21,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.yelp.get_business(request={
+) as exfunc:
+
+    res = exfunc.yelp.get_business(request={
         "business_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -63,14 +63,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.yelp.get_business_reviews(request={
+) as exfunc:
+
+    res = exfunc.yelp.get_business_reviews(request={
         "business_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -105,15 +105,15 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.yelp.search_businesses(request={
+) as exfunc:
+
+    res = exfunc.yelp.search_businesses(request={
         "query": "<value>",
         "location": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

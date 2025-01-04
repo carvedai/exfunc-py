@@ -5,7 +5,7 @@ from exfunc import models, utils
 from exfunc._hooks import HookContext
 from exfunc.types import BaseModel, OptionalNullable, UNSET
 from exfunc.utils import get_security_from_env
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Navigator(BaseSDK):
@@ -16,6 +16,7 @@ class Navigator(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetTaskResponseBody:
         r"""Get web navigator task results
 
@@ -25,6 +26,7 @@ class Navigator(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -38,7 +40,7 @@ class Navigator(BaseSDK):
             request = utils.unmarshal(request, models.GetTaskRequestBody)
         request = cast(models.GetTaskRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/navigator/get-task",
             base_url=base_url,
@@ -49,6 +51,7 @@ class Navigator(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetTaskRequestBody
@@ -108,6 +111,7 @@ class Navigator(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetTaskResponseBody:
         r"""Get web navigator task results
 
@@ -117,6 +121,7 @@ class Navigator(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -130,7 +135,7 @@ class Navigator(BaseSDK):
             request = utils.unmarshal(request, models.GetTaskRequestBody)
         request = cast(models.GetTaskRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/navigator/get-task",
             base_url=base_url,
@@ -141,6 +146,7 @@ class Navigator(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetTaskRequestBody
@@ -202,6 +208,7 @@ class Navigator(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.StartTaskResponseBody:
         r"""Start a web navigator task
 
@@ -211,6 +218,7 @@ class Navigator(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -224,7 +232,7 @@ class Navigator(BaseSDK):
             request = utils.unmarshal(request, models.StartTaskRequestBody)
         request = cast(models.StartTaskRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/navigator/start-task",
             base_url=base_url,
@@ -235,6 +243,7 @@ class Navigator(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.StartTaskRequestBody
@@ -296,6 +305,7 @@ class Navigator(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.StartTaskResponseBody:
         r"""Start a web navigator task
 
@@ -305,6 +315,7 @@ class Navigator(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -318,7 +329,7 @@ class Navigator(BaseSDK):
             request = utils.unmarshal(request, models.StartTaskRequestBody)
         request = cast(models.StartTaskRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/navigator/start-task",
             base_url=base_url,
@@ -329,6 +340,7 @@ class Navigator(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.StartTaskRequestBody
@@ -388,6 +400,7 @@ class Navigator(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.ScrapeResponseBody:
         r"""Scrape a web page
 
@@ -397,6 +410,7 @@ class Navigator(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -410,7 +424,7 @@ class Navigator(BaseSDK):
             request = utils.unmarshal(request, models.ScrapeRequestBody)
         request = cast(models.ScrapeRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/navigator/scrape",
             base_url=base_url,
@@ -421,6 +435,7 @@ class Navigator(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.ScrapeRequestBody
@@ -480,6 +495,7 @@ class Navigator(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.ScrapeResponseBody:
         r"""Scrape a web page
 
@@ -489,6 +505,7 @@ class Navigator(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -502,7 +519,7 @@ class Navigator(BaseSDK):
             request = utils.unmarshal(request, models.ScrapeRequestBody)
         request = cast(models.ScrapeRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/navigator/scrape",
             base_url=base_url,
@@ -513,6 +530,7 @@ class Navigator(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.ScrapeRequestBody

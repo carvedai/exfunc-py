@@ -5,7 +5,7 @@ from exfunc import models, utils
 from exfunc._hooks import HookContext
 from exfunc.types import BaseModel, OptionalNullable, UNSET
 from exfunc.utils import get_security_from_env
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Linkedin(BaseSDK):
@@ -18,6 +18,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetCompanyResponseBody:
         r"""Get LinkedIn company info
 
@@ -27,6 +28,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -40,7 +42,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.GetCompanyRequestBody)
         request = cast(models.GetCompanyRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/linkedin/get-company",
             base_url=base_url,
@@ -51,6 +53,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[models.GetCompanyRequestBody]
@@ -112,6 +115,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetCompanyResponseBody:
         r"""Get LinkedIn company info
 
@@ -121,6 +125,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -134,7 +139,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.GetCompanyRequestBody)
         request = cast(models.GetCompanyRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/linkedin/get-company",
             base_url=base_url,
@@ -145,6 +150,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[models.GetCompanyRequestBody]
@@ -206,6 +212,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetJobPostingResponseBody:
         r"""Get LinkedIn job posting info
 
@@ -215,6 +222,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -228,7 +236,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.GetJobPostingRequestBody)
         request = cast(models.GetJobPostingRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/linkedin/get-job-posting",
             base_url=base_url,
@@ -239,6 +247,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetJobPostingRequestBody
@@ -300,6 +309,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetJobPostingResponseBody:
         r"""Get LinkedIn job posting info
 
@@ -309,6 +319,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -322,7 +333,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.GetJobPostingRequestBody)
         request = cast(models.GetJobPostingRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/linkedin/get-job-posting",
             base_url=base_url,
@@ -333,6 +344,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetJobPostingRequestBody
@@ -394,6 +406,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetPersonResponseBody:
         r"""Get LinkedIn person profile info
 
@@ -403,6 +416,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -416,7 +430,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.GetPersonRequestBody)
         request = cast(models.GetPersonRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/linkedin/get-person",
             base_url=base_url,
@@ -427,6 +441,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetPersonRequestBody
@@ -488,6 +503,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetPersonResponseBody:
         r"""Get LinkedIn person profile info
 
@@ -497,6 +513,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -510,7 +527,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.GetPersonRequestBody)
         request = cast(models.GetPersonRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/linkedin/get-person",
             base_url=base_url,
@@ -521,6 +538,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetPersonRequestBody
@@ -583,6 +601,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchCompaniesResponseBody:
         r"""Search for LinkedIn companies
 
@@ -592,6 +611,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -605,7 +625,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.SearchCompaniesRequestBody)
         request = cast(models.SearchCompaniesRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/linkedin/search-companies",
             base_url=base_url,
@@ -616,6 +636,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,
@@ -684,6 +705,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchCompaniesResponseBody:
         r"""Search for LinkedIn companies
 
@@ -693,6 +715,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -706,7 +729,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.SearchCompaniesRequestBody)
         request = cast(models.SearchCompaniesRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/linkedin/search-companies",
             base_url=base_url,
@@ -717,6 +740,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,
@@ -785,6 +809,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchJobPostingsResponseBody:
         r"""Search for LinkedIn job postings
 
@@ -794,6 +819,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -807,7 +833,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.SearchJobPostingsRequestBody)
         request = cast(models.SearchJobPostingsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/linkedin/search-job-postings",
             base_url=base_url,
@@ -818,6 +844,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,
@@ -886,6 +913,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchJobPostingsResponseBody:
         r"""Search for LinkedIn job postings
 
@@ -895,6 +923,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -908,7 +937,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.SearchJobPostingsRequestBody)
         request = cast(models.SearchJobPostingsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/linkedin/search-job-postings",
             base_url=base_url,
@@ -919,6 +948,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request,
@@ -986,6 +1016,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchPeopleResponseBody:
         r"""Search for LinkedIn people
 
@@ -995,6 +1026,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1008,7 +1040,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.SearchPeopleRequestBody)
         request = cast(models.SearchPeopleRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/linkedin/search-people",
             base_url=base_url,
@@ -1019,6 +1051,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[models.SearchPeopleRequestBody]
@@ -1080,6 +1113,7 @@ class Linkedin(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchPeopleResponseBody:
         r"""Search for LinkedIn people
 
@@ -1089,6 +1123,7 @@ class Linkedin(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1102,7 +1137,7 @@ class Linkedin(BaseSDK):
             request = utils.unmarshal(request, models.SearchPeopleRequestBody)
         request = cast(models.SearchPeopleRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/linkedin/search-people",
             base_url=base_url,
@@ -1113,6 +1148,7 @@ class Linkedin(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[models.SearchPeopleRequestBody]

@@ -5,7 +5,7 @@ from exfunc import models, utils
 from exfunc._hooks import HookContext
 from exfunc.types import BaseModel, OptionalNullable, UNSET
 from exfunc.utils import get_security_from_env
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Google(BaseSDK):
@@ -19,6 +19,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GoogleGetJobPostingResponseBody:
         r"""Get job posting details from Google
 
@@ -28,6 +29,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -41,7 +43,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.GoogleGetJobPostingRequestBody)
         request = cast(models.GoogleGetJobPostingRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/google/get-job-posting",
             base_url=base_url,
@@ -52,6 +54,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GoogleGetJobPostingRequestBody
@@ -116,6 +119,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GoogleGetJobPostingResponseBody:
         r"""Get job posting details from Google
 
@@ -125,6 +129,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -138,7 +143,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.GoogleGetJobPostingRequestBody)
         request = cast(models.GoogleGetJobPostingRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/google/get-job-posting",
             base_url=base_url,
@@ -149,6 +154,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GoogleGetJobPostingRequestBody
@@ -212,6 +218,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetProductResponseBody:
         r"""Get product details from Google
 
@@ -221,6 +228,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -234,7 +242,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.GetProductRequestBody)
         request = cast(models.GetProductRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/google/get-product",
             base_url=base_url,
@@ -245,6 +253,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetProductRequestBody
@@ -306,6 +315,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetProductResponseBody:
         r"""Get product details from Google
 
@@ -315,6 +325,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -328,7 +339,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.GetProductRequestBody)
         request = cast(models.GetProductRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/google/get-product",
             base_url=base_url,
@@ -339,6 +350,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetProductRequestBody
@@ -401,6 +413,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetProductReviewsResponseBody:
         r"""Get product reviews from Google
 
@@ -410,6 +423,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -423,7 +437,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.GetProductReviewsRequestBody)
         request = cast(models.GetProductReviewsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/google/get-product-reviews",
             base_url=base_url,
@@ -434,6 +448,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetProductReviewsRequestBody
@@ -498,6 +513,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetProductReviewsResponseBody:
         r"""Get product reviews from Google
 
@@ -507,6 +523,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -520,7 +537,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.GetProductReviewsRequestBody)
         request = cast(models.GetProductReviewsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/google/get-product-reviews",
             base_url=base_url,
@@ -531,6 +548,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetProductReviewsRequestBody
@@ -595,6 +613,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GoogleSearchJobPostingsResponseBody:
         r"""Search job postings on Google
 
@@ -604,6 +623,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -619,7 +639,7 @@ class Google(BaseSDK):
             )
         request = cast(models.GoogleSearchJobPostingsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/google/search-job-postings",
             base_url=base_url,
@@ -630,6 +650,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GoogleSearchJobPostingsRequestBody
@@ -694,6 +715,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GoogleSearchJobPostingsResponseBody:
         r"""Search job postings on Google
 
@@ -703,6 +725,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -718,7 +741,7 @@ class Google(BaseSDK):
             )
         request = cast(models.GoogleSearchJobPostingsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/google/search-job-postings",
             base_url=base_url,
@@ -729,6 +752,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GoogleSearchJobPostingsRequestBody
@@ -792,6 +816,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchNewsResponseBody:
         r"""Search news articles on Google
 
@@ -801,6 +826,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -814,7 +840,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.SearchNewsRequestBody)
         request = cast(models.SearchNewsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/google/search-news",
             base_url=base_url,
@@ -825,6 +851,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchNewsRequestBody
@@ -886,6 +913,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchNewsResponseBody:
         r"""Search news articles on Google
 
@@ -895,6 +923,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -908,7 +937,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.SearchNewsRequestBody)
         request = cast(models.SearchNewsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/google/search-news",
             base_url=base_url,
@@ -919,6 +948,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchNewsRequestBody
@@ -980,6 +1010,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchProductsResponseBody:
         r"""Search products on Google
 
@@ -989,6 +1020,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1002,7 +1034,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.SearchProductsRequestBody)
         request = cast(models.SearchProductsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/google/search-products",
             base_url=base_url,
@@ -1013,6 +1045,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchProductsRequestBody
@@ -1076,6 +1109,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchProductsResponseBody:
         r"""Search products on Google
 
@@ -1085,6 +1119,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1098,7 +1133,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.SearchProductsRequestBody)
         request = cast(models.SearchProductsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/google/search-products",
             base_url=base_url,
@@ -1109,6 +1144,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchProductsRequestBody
@@ -1172,6 +1208,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchWebResponseBody:
         r"""Search web on Google
 
@@ -1181,6 +1218,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1194,7 +1232,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.SearchWebRequestBody)
         request = cast(models.SearchWebRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/google/search-web",
             base_url=base_url,
@@ -1205,6 +1243,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchWebRequestBody
@@ -1266,6 +1305,7 @@ class Google(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchWebResponseBody:
         r"""Search web on Google
 
@@ -1275,6 +1315,7 @@ class Google(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1288,7 +1329,7 @@ class Google(BaseSDK):
             request = utils.unmarshal(request, models.SearchWebRequestBody)
         request = cast(models.SearchWebRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/google/search-web",
             base_url=base_url,
@@ -1299,6 +1340,7 @@ class Google(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchWebRequestBody

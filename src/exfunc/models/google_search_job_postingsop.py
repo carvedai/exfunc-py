@@ -8,7 +8,7 @@ from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class DatePosted(str, Enum):
+class GoogleSearchJobPostingsDatePosted(str, Enum):
     r"""Filter for job postings based on when they were posted"""
 
     ANY_TIME = "Any time"
@@ -34,7 +34,7 @@ class GoogleSearchJobPostingsRequestBodyTypedDict(TypedDict):
     r"""Source (publisher) to filter job postings. If not provided, postings from all sources will be retrieved"""
     country_code: NotRequired[str]
     r"""The country code to filter job postings"""
-    date_posted: NotRequired[DatePosted]
+    date_posted: NotRequired[GoogleSearchJobPostingsDatePosted]
     r"""Filter for job postings based on when they were posted"""
     job_types: NotRequired[List[JobTypes]]
     r"""Job types to filter (e.g., Full-time, Part-time)"""
@@ -57,7 +57,7 @@ class GoogleSearchJobPostingsRequestBody(BaseModel):
     country_code: Optional[str] = "us"
     r"""The country code to filter job postings"""
 
-    date_posted: Optional[DatePosted] = None
+    date_posted: Optional[GoogleSearchJobPostingsDatePosted] = None
     r"""Filter for job postings based on when they were posted"""
 
     job_types: Optional[List[JobTypes]] = None

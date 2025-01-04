@@ -5,7 +5,7 @@ from exfunc import models, utils
 from exfunc._hooks import HookContext
 from exfunc.types import BaseModel, OptionalNullable, UNSET
 from exfunc.utils import get_security_from_env
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Twitter(BaseSDK):
@@ -16,6 +16,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetTweetResponseBody:
         r"""Get a tweet by ID
 
@@ -25,6 +26,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -38,7 +40,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetTweetRequestBody)
         request = cast(models.GetTweetRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/twitter/get-tweet",
             base_url=base_url,
@@ -49,6 +51,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetTweetRequestBody
@@ -108,6 +111,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetTweetResponseBody:
         r"""Get a tweet by ID
 
@@ -117,6 +121,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -130,7 +135,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetTweetRequestBody)
         request = cast(models.GetTweetRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/twitter/get-tweet",
             base_url=base_url,
@@ -141,6 +146,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetTweetRequestBody
@@ -202,6 +208,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserResponseBody:
         r"""Get a Twitter user by either user ID or username
 
@@ -211,6 +218,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -224,7 +232,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserRequestBody)
         request = cast(models.GetUserRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/twitter/get-user",
             base_url=base_url,
@@ -235,6 +243,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[models.GetUserRequestBody]
@@ -296,6 +305,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserResponseBody:
         r"""Get a Twitter user by either user ID or username
 
@@ -305,6 +315,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -318,7 +329,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserRequestBody)
         request = cast(models.GetUserRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/twitter/get-user",
             base_url=base_url,
@@ -329,6 +340,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, True, "json", Optional[models.GetUserRequestBody]
@@ -391,6 +403,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserFollowersResponseBody:
         r"""Get a Twitter user's followers by username
 
@@ -400,6 +413,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -413,7 +427,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserFollowersRequestBody)
         request = cast(models.GetUserFollowersRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/twitter/get-user-followers",
             base_url=base_url,
@@ -424,6 +438,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetUserFollowersRequestBody
@@ -488,6 +503,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserFollowersResponseBody:
         r"""Get a Twitter user's followers by username
 
@@ -497,6 +513,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -510,7 +527,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserFollowersRequestBody)
         request = cast(models.GetUserFollowersRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/twitter/get-user-followers",
             base_url=base_url,
@@ -521,6 +538,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetUserFollowersRequestBody
@@ -585,6 +603,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserFollowingsResponseBody:
         r"""Get a Twitter user's followings by username
 
@@ -594,6 +613,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -607,7 +627,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserFollowingsRequestBody)
         request = cast(models.GetUserFollowingsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/twitter/get-user-followings",
             base_url=base_url,
@@ -618,6 +638,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetUserFollowingsRequestBody
@@ -682,6 +703,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserFollowingsResponseBody:
         r"""Get a Twitter user's followings by username
 
@@ -691,6 +713,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -704,7 +727,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserFollowingsRequestBody)
         request = cast(models.GetUserFollowingsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/twitter/get-user-followings",
             base_url=base_url,
@@ -715,6 +738,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetUserFollowingsRequestBody
@@ -778,6 +802,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserTweetsResponseBody:
         r"""Get a Twitter user's tweets by username
 
@@ -787,6 +812,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -800,7 +826,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserTweetsRequestBody)
         request = cast(models.GetUserTweetsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/twitter/get-user-tweets",
             base_url=base_url,
@@ -811,6 +837,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetUserTweetsRequestBody
@@ -872,6 +899,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetUserTweetsResponseBody:
         r"""Get a Twitter user's tweets by username
 
@@ -881,6 +909,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -894,7 +923,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.GetUserTweetsRequestBody)
         request = cast(models.GetUserTweetsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/twitter/get-user-tweets",
             base_url=base_url,
@@ -905,6 +934,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetUserTweetsRequestBody
@@ -966,6 +996,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchTweetsResponseBody:
         r"""Search Twitter for tweets
 
@@ -975,6 +1006,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -988,7 +1020,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.SearchTweetsRequestBody)
         request = cast(models.SearchTweetsRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/twitter/search-tweets",
             base_url=base_url,
@@ -999,6 +1031,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchTweetsRequestBody
@@ -1060,6 +1093,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchTweetsResponseBody:
         r"""Search Twitter for tweets
 
@@ -1069,6 +1103,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1082,7 +1117,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.SearchTweetsRequestBody)
         request = cast(models.SearchTweetsRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/twitter/search-tweets",
             base_url=base_url,
@@ -1093,6 +1128,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchTweetsRequestBody
@@ -1154,6 +1190,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchUsersResponseBody:
         r"""Search Twitter for users
 
@@ -1163,6 +1200,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1176,7 +1214,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.SearchUsersRequestBody)
         request = cast(models.SearchUsersRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/twitter/search-users",
             base_url=base_url,
@@ -1187,6 +1225,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchUsersRequestBody
@@ -1248,6 +1287,7 @@ class Twitter(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchUsersResponseBody:
         r"""Search Twitter for users
 
@@ -1257,6 +1297,7 @@ class Twitter(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1270,7 +1311,7 @@ class Twitter(BaseSDK):
             request = utils.unmarshal(request, models.SearchUsersRequestBody)
         request = cast(models.SearchUsersRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/twitter/search-users",
             base_url=base_url,
@@ -1281,6 +1322,7 @@ class Twitter(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchUsersRequestBody

@@ -5,7 +5,7 @@ from exfunc import models, utils
 from exfunc._hooks import HookContext
 from exfunc.types import BaseModel, OptionalNullable, UNSET
 from exfunc.utils import get_security_from_env
-from typing import Any, Optional, Union, cast
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class Zillow(BaseSDK):
@@ -18,6 +18,7 @@ class Zillow(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetPropertyResponseBody:
         r"""Get property details from Zillow
 
@@ -27,6 +28,7 @@ class Zillow(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -40,7 +42,7 @@ class Zillow(BaseSDK):
             request = utils.unmarshal(request, models.GetPropertyRequestBody)
         request = cast(models.GetPropertyRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/zillow/get-property",
             base_url=base_url,
@@ -51,6 +53,7 @@ class Zillow(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetPropertyRequestBody
@@ -112,6 +115,7 @@ class Zillow(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.GetPropertyResponseBody:
         r"""Get property details from Zillow
 
@@ -121,6 +125,7 @@ class Zillow(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -134,7 +139,7 @@ class Zillow(BaseSDK):
             request = utils.unmarshal(request, models.GetPropertyRequestBody)
         request = cast(models.GetPropertyRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/zillow/get-property",
             base_url=base_url,
@@ -145,6 +150,7 @@ class Zillow(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.GetPropertyRequestBody
@@ -207,6 +213,7 @@ class Zillow(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchPropertiesResponseBody:
         r"""Search for properties on Zillow
 
@@ -216,6 +223,7 @@ class Zillow(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -229,7 +237,7 @@ class Zillow(BaseSDK):
             request = utils.unmarshal(request, models.SearchPropertiesRequestBody)
         request = cast(models.SearchPropertiesRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/zillow/search-properties",
             base_url=base_url,
@@ -240,6 +248,7 @@ class Zillow(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchPropertiesRequestBody
@@ -304,6 +313,7 @@ class Zillow(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.SearchPropertiesResponseBody:
         r"""Search for properties on Zillow
 
@@ -313,6 +323,7 @@ class Zillow(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -326,7 +337,7 @@ class Zillow(BaseSDK):
             request = utils.unmarshal(request, models.SearchPropertiesRequestBody)
         request = cast(models.SearchPropertiesRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/zillow/search-properties",
             base_url=base_url,
@@ -337,6 +348,7 @@ class Zillow(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.SearchPropertiesRequestBody

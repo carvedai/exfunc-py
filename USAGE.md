@@ -6,14 +6,12 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_job_posting(request={
-        "job_posting_id": "<id>",
-    })
+) as exfunc:
 
-    if res is not None:
-        # handle response
-        pass
+    res = exfunc.glassdoor.search_job_postings()
+
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -28,14 +26,12 @@ import os
 async def main():
     async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
-    ) as s:
-        res = await s.google.get_job_posting_async(request={
-            "job_posting_id": "<id>",
-        })
+    ) as exfunc:
 
-        if res is not None:
-            # handle response
-            pass
+        res = await exfunc.glassdoor.search_job_postings_async()
+
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```

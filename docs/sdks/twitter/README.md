@@ -25,14 +25,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.twitter.get_tweet(request={
+) as exfunc:
+
+    res = exfunc.twitter.get_tweet(request={
         "tweet_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -67,12 +67,12 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.twitter.get_user()
+) as exfunc:
 
-    if res is not None:
-        # handle response
-        pass
+    res = exfunc.twitter.get_user()
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -107,14 +107,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.twitter.get_user_followers(request={
+) as exfunc:
+
+    res = exfunc.twitter.get_user_followers(request={
         "username": "Timmy_Bogan",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -149,14 +149,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.twitter.get_user_followings(request={
+) as exfunc:
+
+    res = exfunc.twitter.get_user_followings(request={
         "username": "Nathaniel84",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -191,14 +191,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.twitter.get_user_tweets(request={
+) as exfunc:
+
+    res = exfunc.twitter.get_user_tweets(request={
         "username": "Fatima_Mosciski",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -233,14 +233,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.twitter.search_tweets(request={
+) as exfunc:
+
+    res = exfunc.twitter.search_tweets(request={
         "query": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -275,14 +275,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.twitter.search_users(request={
+) as exfunc:
+
+    res = exfunc.twitter.search_users(request={
         "query": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

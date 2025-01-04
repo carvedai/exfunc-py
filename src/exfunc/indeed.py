@@ -8,21 +8,22 @@ from exfunc.utils import get_security_from_env
 from typing import Any, Mapping, Optional, Union, cast
 
 
-class Skyscanner(BaseSDK):
-    def search_flights(
+class Indeed(BaseSDK):
+    def search_job_postings(
         self,
         *,
         request: Union[
-            models.SearchFlightsRequestBody, models.SearchFlightsRequestBodyTypedDict
-        ],
+            models.IndeedSearchJobPostingsRequestBody,
+            models.IndeedSearchJobPostingsRequestBodyTypedDict,
+        ] = models.IndeedSearchJobPostingsRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SearchFlightsResponseBody:
-        r"""Search flights on SkyScanner
+    ) -> models.IndeedSearchJobPostingsResponseBody:
+        r"""Search job postings on Indeed
 
-        Search flights on SkyScanner for given origin, destination, departure date and return date
+        Search job postings on Indeed for a given query
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -39,12 +40,14 @@ class Skyscanner(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.SearchFlightsRequestBody)
-        request = cast(models.SearchFlightsRequestBody, request)
+            request = utils.unmarshal(
+                request, models.IndeedSearchJobPostingsRequestBody
+            )
+        request = cast(models.IndeedSearchJobPostingsRequestBody, request)
 
         req = self._build_request(
             method="POST",
-            path="/skyscanner/search-flights",
+            path="/indeed/search-job-postings",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -56,7 +59,11 @@ class Skyscanner(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SearchFlightsRequestBody
+                request,
+                False,
+                True,
+                "json",
+                Optional[models.IndeedSearchJobPostingsRequestBody],
             ),
             timeout_ms=timeout_ms,
         )
@@ -71,7 +78,7 @@ class Skyscanner(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="search-flights",
+                operation_id="indeed-search-job-postings",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -84,7 +91,9 @@ class Skyscanner(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.SearchFlightsResponseBody)
+            return utils.unmarshal_json(
+                http_res.text, models.IndeedSearchJobPostingsResponseBody
+            )
         if utils.match_response(http_res, "400", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UserErrorData)
             raise models.UserError(data=data)
@@ -106,20 +115,21 @@ class Skyscanner(BaseSDK):
             http_res,
         )
 
-    async def search_flights_async(
+    async def search_job_postings_async(
         self,
         *,
         request: Union[
-            models.SearchFlightsRequestBody, models.SearchFlightsRequestBodyTypedDict
-        ],
+            models.IndeedSearchJobPostingsRequestBody,
+            models.IndeedSearchJobPostingsRequestBodyTypedDict,
+        ] = models.IndeedSearchJobPostingsRequestBody(),
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SearchFlightsResponseBody:
-        r"""Search flights on SkyScanner
+    ) -> models.IndeedSearchJobPostingsResponseBody:
+        r"""Search job postings on Indeed
 
-        Search flights on SkyScanner for given origin, destination, departure date and return date
+        Search job postings on Indeed for a given query
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -136,12 +146,14 @@ class Skyscanner(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.SearchFlightsRequestBody)
-        request = cast(models.SearchFlightsRequestBody, request)
+            request = utils.unmarshal(
+                request, models.IndeedSearchJobPostingsRequestBody
+            )
+        request = cast(models.IndeedSearchJobPostingsRequestBody, request)
 
         req = self._build_request_async(
             method="POST",
-            path="/skyscanner/search-flights",
+            path="/indeed/search-job-postings",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -153,7 +165,11 @@ class Skyscanner(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SearchFlightsRequestBody
+                request,
+                False,
+                True,
+                "json",
+                Optional[models.IndeedSearchJobPostingsRequestBody],
             ),
             timeout_ms=timeout_ms,
         )
@@ -168,7 +184,7 @@ class Skyscanner(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="search-flights",
+                operation_id="indeed-search-job-postings",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -181,7 +197,9 @@ class Skyscanner(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.SearchFlightsResponseBody)
+            return utils.unmarshal_json(
+                http_res.text, models.IndeedSearchJobPostingsResponseBody
+            )
         if utils.match_response(http_res, "400", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UserErrorData)
             raise models.UserError(data=data)

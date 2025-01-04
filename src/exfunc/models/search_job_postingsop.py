@@ -16,7 +16,7 @@ class SearchJobPostingsDatePosted(str, Enum):
     PAST_MONTH = "Past Month"
 
 
-class Salary(str, Enum):
+class SearchJobPostingsSalary(str, Enum):
     r"""Salary range to filter job postings"""
 
     DOLLAR_40_000_PLUS_ = "$40,000+"
@@ -72,7 +72,7 @@ class SearchJobPostingsRequestBodyTypedDict(TypedDict):
     r"""Location to filter job postings"""
     date_posted: NotRequired[SearchJobPostingsDatePosted]
     r"""Filter for job postings based on when they were posted"""
-    salary: NotRequired[Salary]
+    salary: NotRequired[SearchJobPostingsSalary]
     r"""Salary range to filter job postings"""
     job_type: NotRequired[JobType]
     r"""Job type to filter (e.g., Full-time, Part-time)"""
@@ -98,7 +98,7 @@ class SearchJobPostingsRequestBody(BaseModel):
     date_posted: Optional[SearchJobPostingsDatePosted] = None
     r"""Filter for job postings based on when they were posted"""
 
-    salary: Optional[Salary] = None
+    salary: Optional[SearchJobPostingsSalary] = None
     r"""Salary range to filter job postings"""
 
     job_type: Optional[JobType] = None

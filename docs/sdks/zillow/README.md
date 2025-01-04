@@ -20,14 +20,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.zillow.get_property(request={
+) as exfunc:
+
+    res = exfunc.zillow.get_property(request={
         "property_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -63,15 +63,15 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.zillow.search_properties(request={
+) as exfunc:
+
+    res = exfunc.zillow.search_properties(request={
         "location": "<value>",
         "listing_status": exfunc.ListingStatus.FOR_RENT,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

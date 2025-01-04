@@ -1,0 +1,16 @@
+# GlassdoorJobPosting
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `url`                                                                | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The URL link to the Glassdoor job posting                            |
+| `title`                                                              | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The title of the job posting                                         |
+| `location`                                                           | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The location of the job posting                                      |
+| `description`                                                        | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Detailed description of the job posting                              |
+| `date_posted`                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | Date when the job was posted                                         |
+| `company_name`                                                       | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Name of the company offering the job                                 |
+| `company_url`                                                        | *OptionalNullable[str]*                                              | :heavy_minus_sign:                                                   | URL to the company page on Glassdoor                                 |
+| `company_website_url`                                                | *OptionalNullable[str]*                                              | :heavy_minus_sign:                                                   | URL to the company's website                                         |
+| `salary`                                                             | [OptionalNullable[models.Salary]](../models/salary.md)               | :heavy_minus_sign:                                                   | Salary details for the job posting                                   |

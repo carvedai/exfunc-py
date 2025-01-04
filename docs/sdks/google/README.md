@@ -25,14 +25,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_job_posting(request={
+) as exfunc:
+
+    res = exfunc.google.get_job_posting(request={
         "job_posting_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -67,14 +67,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_product(request={
+) as exfunc:
+
+    res = exfunc.google.get_product(request={
         "product_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -109,14 +109,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_product_reviews(request={
+) as exfunc:
+
+    res = exfunc.google.get_product_reviews(request={
         "product_id": "<id>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -151,14 +151,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.search_job_postings(request={
+) as exfunc:
+
+    res = exfunc.google.search_job_postings(request={
         "query": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -193,14 +193,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.search_news(request={
+) as exfunc:
+
+    res = exfunc.google.search_news(request={
         "query": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -235,14 +235,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.search_products(request={
+) as exfunc:
+
+    res = exfunc.google.search_products(request={
         "query": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -277,14 +277,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.search_web(request={
+) as exfunc:
+
+    res = exfunc.google.search_web(request={
         "query": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

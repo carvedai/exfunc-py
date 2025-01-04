@@ -24,14 +24,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.linkedin.get_company(request={
+) as exfunc:
+
+    res = exfunc.linkedin.get_company(request={
         "company_url": "https://minty-adaptation.biz/",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -66,14 +66,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.linkedin.get_job_posting(request={
+) as exfunc:
+
+    res = exfunc.linkedin.get_job_posting(request={
         "job_posting_url": "https://exalted-comestible.info",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -108,14 +108,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.linkedin.get_person(request={
+) as exfunc:
+
+    res = exfunc.linkedin.get_person(request={
         "person_url": "https://silky-spring.biz/",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -150,12 +150,12 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.linkedin.search_companies()
+) as exfunc:
 
-    if res is not None:
-        # handle response
-        pass
+    res = exfunc.linkedin.search_companies()
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -190,15 +190,15 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.linkedin.search_job_postings(request={
+) as exfunc:
+
+    res = exfunc.linkedin.search_job_postings(request={
         "keywords": "<value>",
         "location": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -233,14 +233,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.linkedin.search_people(request={
+) as exfunc:
+
+    res = exfunc.linkedin.search_people(request={
         "keywords": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

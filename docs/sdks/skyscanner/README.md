@@ -20,17 +20,17 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.skyscanner.search_flights(request={
+) as exfunc:
+
+    res = exfunc.skyscanner.search_flights(request={
         "origin": "<value>",
         "destination": "<value>",
         "flight_type": exfunc.FlightType.ROUNDTRIP,
         "depart_date": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

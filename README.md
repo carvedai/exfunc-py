@@ -81,14 +81,12 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_job_posting(request={
-        "job_posting_id": "<id>",
-    })
+) as exfunc:
 
-    if res is not None:
-        # handle response
-        pass
+    res = exfunc.glassdoor.search_job_postings()
+
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -103,14 +101,12 @@ import os
 async def main():
     async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
-    ) as s:
-        res = await s.google.get_job_posting_async(request={
-            "job_posting_id": "<id>",
-        })
+    ) as exfunc:
 
-        if res is not None:
-            # handle response
-            pass
+        res = await exfunc.glassdoor.search_job_postings_async()
+
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
@@ -123,6 +119,10 @@ asyncio.run(main())
 <summary>Available methods</summary>
 
 
+### [glassdoor](docs/sdks/glassdoor/README.md)
+
+* [search_job_postings](docs/sdks/glassdoor/README.md#search_job_postings) - Search job postings on Glassdoor
+
 ### [google](docs/sdks/google/README.md)
 
 * [get_job_posting](docs/sdks/google/README.md#get_job_posting) - Get job posting details from Google
@@ -132,6 +132,10 @@ asyncio.run(main())
 * [search_news](docs/sdks/google/README.md#search_news) - Search news articles on Google
 * [search_products](docs/sdks/google/README.md#search_products) - Search products on Google
 * [search_web](docs/sdks/google/README.md#search_web) - Search web on Google
+
+### [indeed](docs/sdks/indeed/README.md)
+
+* [search_job_postings](docs/sdks/indeed/README.md#search_job_postings) - Search job postings on Indeed
 
 ### [linkedin](docs/sdks/linkedin/README.md)
 
@@ -189,15 +193,13 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_job_posting(request={
-        "job_posting_id": "<id>",
-    },
+) as exfunc:
+
+    res = exfunc.glassdoor.search_job_postings(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -210,14 +212,12 @@ import os
 with Exfunc(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_job_posting(request={
-        "job_posting_id": "<id>",
-    })
+) as exfunc:
 
-    if res is not None:
-        # handle response
-        pass
+    res = exfunc.glassdoor.search_job_postings()
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Retries [retries] -->
@@ -236,7 +236,7 @@ By default, an API error will raise a models.SDKError exception, which has the f
 | `.raw_response` | *httpx.Response* | The raw HTTP response |
 | `.body`         | *str*            | The response content  |
 
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get_job_posting_async` method may raise the following exceptions:
+When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `search_job_postings_async` method may raise the following exceptions:
 
 | Error Type         | Status Code | Content Type     |
 | ------------------ | ----------- | ---------------- |
@@ -252,16 +252,14 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
+) as exfunc:
     res = None
     try:
-        res = s.google.get_job_posting(request={
-            "job_posting_id": "<id>",
-        })
 
-        if res is not None:
-            # handle response
-            pass
+        res = exfunc.glassdoor.search_job_postings()
+
+        # Handle response
+        print(res)
 
     except models.UserError as e:
         # handle e.data: models.UserErrorData
@@ -288,14 +286,12 @@ import os
 with Exfunc(
     server_url="https://api.exfunc.com",
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_job_posting(request={
-        "job_posting_id": "<id>",
-    })
+) as exfunc:
 
-    if res is not None:
-        # handle response
-        pass
+    res = exfunc.glassdoor.search_job_postings()
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Server Selection [server] -->
@@ -399,14 +395,12 @@ import os
 
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as s:
-    res = s.google.get_job_posting(request={
-        "job_posting_id": "<id>",
-    })
+) as exfunc:
 
-    if res is not None:
-        # handle response
-        pass
+    res = exfunc.glassdoor.search_job_postings()
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->

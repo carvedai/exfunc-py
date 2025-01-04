@@ -7,7 +7,9 @@ from .utils.logger import Logger, get_default_logger
 from .utils.retries import RetryConfig
 from exfunc import models, utils
 from exfunc._hooks import SDKHooks
+from exfunc.glassdoor import Glassdoor
 from exfunc.google import Google
+from exfunc.indeed import Indeed
 from exfunc.linkedin import Linkedin
 from exfunc.navigator import Navigator
 from exfunc.skyscanner import Skyscanner
@@ -29,7 +31,9 @@ class Exfunc(BaseSDK):
 
     """
 
+    glassdoor: Glassdoor
     google: Google
+    indeed: Indeed
     linkedin: Linkedin
     navigator: Navigator
     skyscanner: Skyscanner
@@ -116,7 +120,9 @@ class Exfunc(BaseSDK):
         self._init_sdks()
 
     def _init_sdks(self):
+        self.glassdoor = Glassdoor(self.sdk_configuration)
         self.google = Google(self.sdk_configuration)
+        self.indeed = Indeed(self.sdk_configuration)
         self.linkedin = Linkedin(self.sdk_configuration)
         self.navigator = Navigator(self.sdk_configuration)
         self.skyscanner = Skyscanner(self.sdk_configuration)
