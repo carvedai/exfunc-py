@@ -284,7 +284,7 @@ from exfunc import Exfunc
 import os
 
 with Exfunc(
-    server_url="https://api.exfunc.com",
+    server_url="https://api.exfunc.dev",
     api_key=os.getenv("EXFUNC_API_KEY", ""),
 ) as exfunc:
 
