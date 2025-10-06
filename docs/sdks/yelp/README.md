@@ -15,15 +15,17 @@ Get business details from Yelp for a given business ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-business" method="post" path="/yelp/get-business" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.yelp.get_business(request={
+    res = e_client.yelp.get_business(request={
         "business_id": "<id>",
     })
 
@@ -57,15 +59,17 @@ Get a list of reviews on Yelp for a given business ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-business-reviews" method="post" path="/yelp/get-business-reviews" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.yelp.get_business_reviews(request={
+    res = e_client.yelp.get_business_reviews(request={
         "business_id": "<id>",
     })
 
@@ -99,15 +103,17 @@ Search for businesses on Yelp given a query, location, and other criteria
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-businesses" method="post" path="/yelp/search-businesses" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.yelp.search_businesses(request={
+    res = e_client.yelp.search_businesses(request={
         "query": "<value>",
         "location": "<value>",
     })

@@ -13,16 +13,18 @@ Search flights on SkyScanner for given origin, destination, departure date and r
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-flights" method="post" path="/skyscanner/search-flights" -->
 ```python
 import exfunc
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.skyscanner.search_flights(request={
+    res = e_client.skyscanner.search_flights(request={
         "origin": "<value>",
         "destination": "<value>",
         "flight_type": exfunc.FlightType.ROUNDTRIP,

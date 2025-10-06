@@ -19,15 +19,17 @@ Get job posting details from Google given job posting ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="google-get-job-posting" method="post" path="/google/get-job-posting" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.google.get_job_posting(request={
+    res = e_client.google.get_job_posting(request={
         "job_posting_id": "<id>",
     })
 
@@ -61,15 +63,17 @@ Get product details (title, description, rating, etc.) from Google given product
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-product" method="post" path="/google/get-product" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.google.get_product(request={
+    res = e_client.google.get_product(request={
         "product_id": "<id>",
     })
 
@@ -103,15 +107,17 @@ Get product reviews (title, author, source, rating, etc.) from Google given prod
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-product-reviews" method="post" path="/google/get-product-reviews" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.google.get_product_reviews(request={
+    res = e_client.google.get_product_reviews(request={
         "product_id": "<id>",
     })
 
@@ -145,15 +151,17 @@ Search job postings on Google for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="google-search-job-postings" method="post" path="/google/search-job-postings" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.google.search_job_postings(request={
+    res = e_client.google.search_job_postings(request={
         "query": "<value>",
     })
 
@@ -187,15 +195,17 @@ Search news articles on Google for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-news" method="post" path="/google/search-news" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.google.search_news(request={
+    res = e_client.google.search_news(request={
         "query": "<value>",
     })
 
@@ -229,15 +239,17 @@ Search products on Google for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-products" method="post" path="/google/search-products" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.google.search_products(request={
+    res = e_client.google.search_products(request={
         "query": "<value>",
     })
 
@@ -271,15 +283,17 @@ Search web on Google for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-web" method="post" path="/google/search-web" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.google.search_web(request={
+    res = e_client.google.search_web(request={
         "query": "<value>",
     })
 

@@ -14,15 +14,17 @@ Get property details on Zillow for a given property ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-property" method="post" path="/zillow/get-property" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.zillow.get_property(request={
+    res = e_client.zillow.get_property(request={
         "property_id": "<id>",
     })
 
@@ -56,18 +58,20 @@ Search for properties on Zillow for a given location, listing status, and other 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-properties" method="post" path="/zillow/search-properties" -->
 ```python
 import exfunc
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.zillow.search_properties(request={
+    res = e_client.zillow.search_properties(request={
         "location": "<value>",
-        "listing_status": exfunc.ListingStatus.FOR_RENT,
+        "listing_status": exfunc.ListingStatus.SOLD,
     })
 
     # Handle response

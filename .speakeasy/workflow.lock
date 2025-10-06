@@ -1,9 +1,9 @@
-speakeasyVersion: 1.462.2
+speakeasyVersion: 1.635.1
 sources:
     exfunc-OAS:
         sourceNamespace: exfunc-oas
-        sourceRevisionDigest: sha256:9a71b1cf9d702a3ce28b76bb2a0fc30e96cb81ef1009093a35d46190012e4b21
-        sourceBlobDigest: sha256:b0fc563754a6a3e848baa3c687a6e5024102120377bb9c8fd6cde1318eb057de
+        sourceRevisionDigest: sha256:35efae7384e4b322d6772332b7e6fea06ba9f203cb6b22dba2e95c5a233122b7
+        sourceBlobDigest: sha256:27e37d95130efb2e6199fe069f3e45ad5ff7e654e99cc4847833fe19398f96f7
         tags:
             - latest
             - 1.0.0
@@ -11,10 +11,8 @@ targets:
     exfunc:
         source: exfunc-OAS
         sourceNamespace: exfunc-oas
-        sourceRevisionDigest: sha256:9a71b1cf9d702a3ce28b76bb2a0fc30e96cb81ef1009093a35d46190012e4b21
-        sourceBlobDigest: sha256:b0fc563754a6a3e848baa3c687a6e5024102120377bb9c8fd6cde1318eb057de
-        codeSamplesNamespace: exfunc-oas-code-samples
-        codeSamplesRevisionDigest: sha256:31e976cb1d5b141f039afc0457698fa9b3b2d090fe43962dc3b3aa555a638c34
+        sourceRevisionDigest: sha256:35efae7384e4b322d6772332b7e6fea06ba9f203cb6b22dba2e95c5a233122b7
+        sourceBlobDigest: sha256:27e37d95130efb2e6199fe069f3e45ad5ff7e654e99cc4847833fe19398f96f7
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -35,5 +33,5 @@ workflow:
                     token: $pypi_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/nunchi/nunchi/exfunc-oas-code-samples
+                    location: registry.speakeasyapi.dev/nunchi/nunchi/exfunc-oas-python-code-samples
                 blocking: false

@@ -13,15 +13,17 @@ Search job postings on Glassdoor for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="glassdoor-search-job-postings" method="post" path="/glassdoor/search-job-postings" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.glassdoor.search_job_postings()
+    res = e_client.glassdoor.search_job_postings(request={})
 
     # Handle response
     print(res)

@@ -13,8 +13,12 @@ Developer-friendly & type-safe Python SDK specifically catered to leverage *exfu
 <!-- Start Summary [summary] -->
 ## Summary
 
-Exfunc Python SDK is a library that allows you to easily take web actions on websites from your Python codebase.
+Exfunc APIs: # Authentication
 
+Exfunc offers one form of authentication:
+  - API Key
+
+<SecurityDefinitions />
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -30,6 +34,7 @@ Exfunc Python SDK is a library that allows you to easily take web actions on web
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
+  * [Resource Management](#resource-management)
   * [Debugging](#debugging)
 * [Development](#development)
   * [Maturity](#maturity)
@@ -40,7 +45,20 @@ Exfunc Python SDK is a library that allows you to easily take web actions on web
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-The SDK can be installed with either *pip* or *poetry* package managers.
+> [!NOTE]
+> **Python version upgrade policy**
+>
+> Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
+
+The SDK can be installed with *uv*, *pip*, or *poetry* package managers.
+
+### uv
+
+*uv* is a fast Python package installer and resolver, designed as a drop-in replacement for pip and pip-tools. It's recommended for its speed and modern Python tooling capabilities.
+
+```bash
+uv add exfunc
+```
 
 ### PIP
 
@@ -57,6 +75,37 @@ pip install exfunc
 ```bash
 poetry add exfunc
 ```
+
+### Shell and script usage with `uv`
+
+You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
+
+```shell
+uvx --from exfunc python
+```
+
+It's also possible to write a standalone Python script without needing to set up a whole project like so:
+
+```python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "exfunc",
+# ]
+# ///
+
+from exfunc import Exfunc
+
+sdk = Exfunc(
+  # SDK arguments
+)
+
+# Rest of script here...
+```
+
+Once that is saved to a file, you can run it with `uv run script.py` where
+`script.py` can be replaced with the actual file name.
 <!-- End SDK Installation [installation] -->
 
 <!-- Start IDE Support [idesupport] -->
@@ -79,11 +128,12 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.glassdoor.search_job_postings()
+    res = e_client.glassdoor.search_job_postings(request={})
 
     # Handle response
     print(res)
@@ -91,7 +141,8 @@ with Exfunc(
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
@@ -99,11 +150,12 @@ from exfunc import Exfunc
 import os
 
 async def main():
+
     async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
-    ) as exfunc:
+    ) as e_client:
 
-        res = await exfunc.glassdoor.search_job_postings_async()
+        res = await e_client.glassdoor.search_job_postings_async(request={})
 
         # Handle response
         print(res)
@@ -191,11 +243,12 @@ from exfunc import Exfunc
 from exfunc.utils import BackoffStrategy, RetryConfig
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.glassdoor.search_job_postings(,
+    res = e_client.glassdoor.search_job_postings(request={},
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Handle response
@@ -209,12 +262,13 @@ from exfunc import Exfunc
 from exfunc.utils import BackoffStrategy, RetryConfig
 import os
 
+
 with Exfunc(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.glassdoor.search_job_postings()
+    res = e_client.glassdoor.search_job_postings(request={})
 
     # Handle response
     print(res)
@@ -225,52 +279,68 @@ with Exfunc(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+[`ExfuncError`](./src/exfunc/models/exfuncerror.py) is the base class for all HTTP error responses. It has the following properties:
 
-By default, an API error will raise a models.SDKError exception, which has the following properties:
-
-| Property        | Type             | Description           |
-|-----------------|------------------|-----------------------|
-| `.status_code`  | *int*            | The HTTP status code  |
-| `.message`      | *str*            | The error message     |
-| `.raw_response` | *httpx.Response* | The raw HTTP response |
-| `.body`         | *str*            | The response content  |
-
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `search_job_postings_async` method may raise the following exceptions:
-
-| Error Type         | Status Code | Content Type     |
-| ------------------ | ----------- | ---------------- |
-| models.UserError   | 400         | application/json |
-| models.ServerError | 500         | application/json |
-| models.SDKError    | 4XX, 5XX    | \*/\*            |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
 ### Example
-
 ```python
 from exfunc import Exfunc, models
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
     res = None
     try:
 
-        res = exfunc.glassdoor.search_job_postings()
+        res = e_client.glassdoor.search_job_postings(request={})
 
         # Handle response
         print(res)
 
-    except models.UserError as e:
-        # handle e.data: models.UserErrorData
-        raise(e)
-    except models.ServerError as e:
-        # handle e.data: models.ServerErrorData
-        raise(e)
-    except models.SDKError as e:
-        # handle exception
-        raise(e)
+
+    except models.ExfuncError as e:
+        # The base class for HTTP error responses
+        print(e.message)
+        print(e.status_code)
+        print(e.body)
+        print(e.headers)
+        print(e.raw_response)
+
+        # Depending on the method different errors may be thrown
+        if isinstance(e, models.UserError):
+            print(e.data.message)  # Optional[str]
 ```
+
+### Error Classes
+**Primary errors:**
+* [`ExfuncError`](./src/exfunc/models/exfuncerror.py): The base class for HTTP error responses.
+  * [`UserError`](./src/exfunc/models/usererror.py): User error response. Status code `400`.
+  * [`ServerError`](./src/exfunc/models/servererror.py): Server error response. Status code `500`.
+
+<details><summary>Less common errors (5)</summary>
+
+<br />
+
+**Network errors:**
+* [`httpx.RequestError`](https://www.python-httpx.org/exceptions/#httpx.RequestError): Base class for request errors.
+    * [`httpx.ConnectError`](https://www.python-httpx.org/exceptions/#httpx.ConnectError): HTTP client was unable to make a request to a server.
+    * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
+
+
+**Inherit from [`ExfuncError`](./src/exfunc/models/exfuncerror.py)**:
+* [`ResponseValidationError`](./src/exfunc/models/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -278,17 +348,18 @@ with Exfunc(
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+The default server can be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     server_url="https://api.exfunc.dev",
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.glassdoor.search_job_postings()
+    res = e_client.glassdoor.search_job_postings(request={})
 
     # Handle response
     print(res)
@@ -393,17 +464,46 @@ To authenticate with the API the `api_key` parameter must be set when initializi
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.glassdoor.search_job_postings()
+    res = e_client.glassdoor.search_job_postings(request={})
 
     # Handle response
     print(res)
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Resource Management [resource-management] -->
+## Resource Management
+
+The `Exfunc` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+
+[context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
+
+```python
+from exfunc import Exfunc
+import os
+def main():
+
+    with Exfunc(
+        api_key=os.getenv("EXFUNC_API_KEY", ""),
+    ) as e_client:
+        # Rest of application here...
+
+
+# Or when using async:
+async def amain():
+
+    async with Exfunc(
+        api_key=os.getenv("EXFUNC_API_KEY", ""),
+    ) as e_client:
+        # Rest of application here...
+```
+<!-- End Resource Management [resource-management] -->
 
 <!-- Start Debugging [debug] -->
 ## Debugging

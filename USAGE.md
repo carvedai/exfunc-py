@@ -4,11 +4,12 @@
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.glassdoor.search_job_postings()
+    res = e_client.glassdoor.search_job_postings(request={})
 
     # Handle response
     print(res)
@@ -16,7 +17,8 @@ with Exfunc(
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
@@ -24,11 +26,12 @@ from exfunc import Exfunc
 import os
 
 async def main():
+
     async with Exfunc(
         api_key=os.getenv("EXFUNC_API_KEY", ""),
-    ) as exfunc:
+    ) as e_client:
 
-        res = await exfunc.glassdoor.search_job_postings_async()
+        res = await e_client.glassdoor.search_job_postings_async(request={})
 
         # Handle response
         print(res)

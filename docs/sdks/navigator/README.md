@@ -15,15 +15,17 @@ Get web navigator task results for a given task ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-task" method="post" path="/navigator/get-task" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.navigator.get_task(request={
+    res = e_client.navigator.get_task(request={
         "task_id": "<id>",
     })
 
@@ -57,16 +59,18 @@ Start a web navigator task for a given url and objective
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="start-task" method="post" path="/navigator/start-task" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.navigator.start_task(request={
-        "url": "https://narrow-jump.net",
+    res = e_client.navigator.start_task(request={
+        "url": "https://great-maestro.name/",
         "objective": "<value>",
     })
 
@@ -100,16 +104,18 @@ Scrape a web page for a given url
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="scrape" method="post" path="/navigator/scrape" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.navigator.scrape(request={
-        "url": "https://hasty-promise.com",
+    res = e_client.navigator.scrape(request={
+        "url": "https://all-grandpa.net/",
     })
 
     # Handle response

@@ -19,15 +19,17 @@ Get tweet details given a tweet ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-tweet" method="post" path="/twitter/get-tweet" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.twitter.get_tweet(request={
+    res = e_client.twitter.get_tweet(request={
         "tweet_id": "<id>",
     })
 
@@ -61,15 +63,17 @@ Get user details given a Twitter user ID or username (handle)
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-user" method="post" path="/twitter/get-user" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.twitter.get_user()
+    res = e_client.twitter.get_user(request={})
 
     # Handle response
     print(res)
@@ -101,16 +105,18 @@ Get a list of followers given a Twitter username (handle)
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-user-followers" method="post" path="/twitter/get-user-followers" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.twitter.get_user_followers(request={
-        "username": "Timmy_Bogan",
+    res = e_client.twitter.get_user_followers(request={
+        "username": "Angel.OConnell68",
     })
 
     # Handle response
@@ -143,16 +149,18 @@ Get a list of followings given a Twitter username (handle)
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="getUserFollowings" method="post" path="/twitter/get-user-followings" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.twitter.get_user_followings(request={
-        "username": "Nathaniel84",
+    res = e_client.twitter.get_user_followings(request={
+        "username": "Juvenal26",
     })
 
     # Handle response
@@ -185,16 +193,18 @@ Get a list of tweets given a Twitter username (handle)
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-user-tweets" method="post" path="/twitter/get-user-tweets" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.twitter.get_user_tweets(request={
-        "username": "Fatima_Mosciski",
+    res = e_client.twitter.get_user_tweets(request={
+        "username": "Norberto_Cassin29",
     })
 
     # Handle response
@@ -227,15 +237,17 @@ Search tweets on Twitter for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-tweets" method="post" path="/twitter/search-tweets" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.twitter.search_tweets(request={
+    res = e_client.twitter.search_tweets(request={
         "query": "<value>",
     })
 
@@ -269,15 +281,17 @@ Search users on Twitter for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-users" method="post" path="/twitter/search-users" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.twitter.search_users(request={
+    res = e_client.twitter.search_users(request={
         "query": "<value>",
     })
 

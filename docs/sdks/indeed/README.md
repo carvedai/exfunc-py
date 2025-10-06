@@ -13,15 +13,17 @@ Search job postings on Indeed for a given query
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="indeed-search-job-postings" method="post" path="/indeed/search-job-postings" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.indeed.search_job_postings()
+    res = e_client.indeed.search_job_postings(request={})
 
     # Handle response
     print(res)

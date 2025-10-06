@@ -18,17 +18,17 @@ Get LinkedIn company info from either a LinkedIn company url or company website 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-company" method="post" path="/linkedin/get-company" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.linkedin.get_company(request={
-        "company_url": "https://minty-adaptation.biz/",
-    })
+    res = e_client.linkedin.get_company(request={})
 
     # Handle response
     print(res)
@@ -60,16 +60,18 @@ Get LinkedIn job posting info from a LinkedIn job posting url
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-job-posting" method="post" path="/linkedin/get-job-posting" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.linkedin.get_job_posting(request={
-        "job_posting_url": "https://exalted-comestible.info",
+    res = e_client.linkedin.get_job_posting(request={
+        "job_posting_url": "https://second-hand-printer.org",
     })
 
     # Handle response
@@ -102,16 +104,18 @@ Get LinkedIn person profile info from a LinkedIn person profile url
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="get-person" method="post" path="/linkedin/get-person" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.linkedin.get_person(request={
-        "person_url": "https://silky-spring.biz/",
+    res = e_client.linkedin.get_person(request={
+        "person_url": "https://unsteady-suitcase.net/",
     })
 
     # Handle response
@@ -144,15 +148,17 @@ Search for companies on LinkedIn for a given name, locations, and other criteria
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-companies" method="post" path="/linkedin/search-companies" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.linkedin.search_companies()
+    res = e_client.linkedin.search_companies(request={})
 
     # Handle response
     print(res)
@@ -184,18 +190,17 @@ Search for job postings on LinkedIn for a given keywords, location, and other cr
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-job-postings" method="post" path="/linkedin/search-job-postings" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.linkedin.search_job_postings(request={
-        "keywords": "<value>",
-        "location": "<value>",
-    })
+    res = e_client.linkedin.search_job_postings(request={})
 
     # Handle response
     print(res)
@@ -227,17 +232,17 @@ Search for people on LinkedIn for a given keywords, locations, and other criteri
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="search-people" method="post" path="/linkedin/search-people" -->
 ```python
 from exfunc import Exfunc
 import os
 
+
 with Exfunc(
     api_key=os.getenv("EXFUNC_API_KEY", ""),
-) as exfunc:
+) as e_client:
 
-    res = exfunc.linkedin.search_people(request={
-        "keywords": "<value>",
-    })
+    res = e_client.linkedin.search_people(request={})
 
     # Handle response
     print(res)

@@ -5,6 +5,7 @@ from exfunc import models, utils
 from exfunc._hooks import HookContext
 from exfunc.types import BaseModel, OptionalNullable, UNSET
 from exfunc.utils import get_security_from_env
+from exfunc.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Mapping, Optional, Union, cast
 
 
@@ -14,7 +15,7 @@ class Linkedin(BaseSDK):
         *,
         request: Union[
             models.GetCompanyRequestBody, models.GetCompanyRequestBodyTypedDict
-        ] = models.GetCompanyRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -37,6 +38,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.GetCompanyRequestBody)
@@ -56,7 +59,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, True, "json", Optional[models.GetCompanyRequestBody]
+                request, False, False, "json", models.GetCompanyRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -71,6 +74,8 @@ class Linkedin(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-company",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -82,36 +87,30 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.GetCompanyResponseBody)
+            return unmarshal_json_response(models.GetCompanyResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_company_async(
         self,
         *,
         request: Union[
             models.GetCompanyRequestBody, models.GetCompanyRequestBodyTypedDict
-        ] = models.GetCompanyRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -134,6 +133,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.GetCompanyRequestBody)
@@ -153,7 +154,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, True, "json", Optional[models.GetCompanyRequestBody]
+                request, False, False, "json", models.GetCompanyRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -168,6 +169,8 @@ class Linkedin(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-company",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -179,29 +182,23 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.GetCompanyResponseBody)
+            return unmarshal_json_response(models.GetCompanyResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_job_posting(
         self,
@@ -231,6 +228,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.GetJobPostingRequestBody)
@@ -265,6 +264,8 @@ class Linkedin(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-job-posting",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -276,29 +277,23 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.GetJobPostingResponseBody)
+            return unmarshal_json_response(models.GetJobPostingResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_job_posting_async(
         self,
@@ -328,6 +323,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.GetJobPostingRequestBody)
@@ -362,6 +359,8 @@ class Linkedin(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-job-posting",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -373,29 +372,23 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.GetJobPostingResponseBody)
+            return unmarshal_json_response(models.GetJobPostingResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_person(
         self,
@@ -425,6 +418,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.GetPersonRequestBody)
@@ -459,6 +454,8 @@ class Linkedin(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-person",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -470,29 +467,23 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.GetPersonResponseBody)
+            return unmarshal_json_response(models.GetPersonResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_person_async(
         self,
@@ -522,6 +513,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.GetPersonRequestBody)
@@ -556,6 +549,8 @@ class Linkedin(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="get-person",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -567,29 +562,23 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.GetPersonResponseBody)
+            return unmarshal_json_response(models.GetPersonResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def search_companies(
         self,
@@ -597,7 +586,7 @@ class Linkedin(BaseSDK):
         request: Union[
             models.SearchCompaniesRequestBody,
             models.SearchCompaniesRequestBodyTypedDict,
-        ] = models.SearchCompaniesRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -620,6 +609,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.SearchCompaniesRequestBody)
@@ -639,11 +630,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.SearchCompaniesRequestBody],
+                request, False, False, "json", models.SearchCompaniesRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -658,6 +645,8 @@ class Linkedin(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="search-companies",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -669,31 +658,23 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.SearchCompaniesResponseBody
-            )
+            return unmarshal_json_response(models.SearchCompaniesResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def search_companies_async(
         self,
@@ -701,7 +682,7 @@ class Linkedin(BaseSDK):
         request: Union[
             models.SearchCompaniesRequestBody,
             models.SearchCompaniesRequestBodyTypedDict,
-        ] = models.SearchCompaniesRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -724,6 +705,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.SearchCompaniesRequestBody)
@@ -743,11 +726,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.SearchCompaniesRequestBody],
+                request, False, False, "json", models.SearchCompaniesRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -762,6 +741,8 @@ class Linkedin(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="search-companies",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -773,31 +754,23 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.SearchCompaniesResponseBody
-            )
+            return unmarshal_json_response(models.SearchCompaniesResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def search_job_postings(
         self,
@@ -805,7 +778,7 @@ class Linkedin(BaseSDK):
         request: Union[
             models.SearchJobPostingsRequestBody,
             models.SearchJobPostingsRequestBodyTypedDict,
-        ] = models.SearchJobPostingsRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -828,6 +801,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.SearchJobPostingsRequestBody)
@@ -847,11 +822,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.SearchJobPostingsRequestBody],
+                request, False, False, "json", models.SearchJobPostingsRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -866,6 +837,8 @@ class Linkedin(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="search-job-postings",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -877,31 +850,25 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.SearchJobPostingsResponseBody
+            return unmarshal_json_response(
+                models.SearchJobPostingsResponseBody, http_res
             )
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def search_job_postings_async(
         self,
@@ -909,7 +876,7 @@ class Linkedin(BaseSDK):
         request: Union[
             models.SearchJobPostingsRequestBody,
             models.SearchJobPostingsRequestBodyTypedDict,
-        ] = models.SearchJobPostingsRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -932,6 +899,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.SearchJobPostingsRequestBody)
@@ -951,11 +920,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.SearchJobPostingsRequestBody],
+                request, False, False, "json", models.SearchJobPostingsRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -970,6 +935,8 @@ class Linkedin(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="search-job-postings",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -981,38 +948,32 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, models.SearchJobPostingsResponseBody
+            return unmarshal_json_response(
+                models.SearchJobPostingsResponseBody, http_res
             )
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def search_people(
         self,
         *,
         request: Union[
             models.SearchPeopleRequestBody, models.SearchPeopleRequestBodyTypedDict
-        ] = models.SearchPeopleRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1035,6 +996,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.SearchPeopleRequestBody)
@@ -1054,7 +1017,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, True, "json", Optional[models.SearchPeopleRequestBody]
+                request, False, False, "json", models.SearchPeopleRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -1069,6 +1032,8 @@ class Linkedin(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="search-people",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -1080,36 +1045,30 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.SearchPeopleResponseBody)
+            return unmarshal_json_response(models.SearchPeopleResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def search_people_async(
         self,
         *,
         request: Union[
             models.SearchPeopleRequestBody, models.SearchPeopleRequestBodyTypedDict
-        ] = models.SearchPeopleRequestBody(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1132,6 +1091,8 @@ class Linkedin(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.SearchPeopleRequestBody)
@@ -1151,7 +1112,7 @@ class Linkedin(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, True, "json", Optional[models.SearchPeopleRequestBody]
+                request, False, False, "json", models.SearchPeopleRequestBody
             ),
             timeout_ms=timeout_ms,
         )
@@ -1166,6 +1127,8 @@ class Linkedin(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
                 operation_id="search-people",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
@@ -1177,26 +1140,20 @@ class Linkedin(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.SearchPeopleResponseBody)
+            return unmarshal_json_response(models.SearchPeopleResponseBody, http_res)
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UserErrorData)
-            raise models.UserError(data=data)
+            response_data = unmarshal_json_response(models.UserErrorData, http_res)
+            raise models.UserError(response_data, http_res)
         if utils.match_response(http_res, "500", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ServerErrorData)
-            raise models.ServerError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            response_data = unmarshal_json_response(models.ServerErrorData, http_res)
+            raise models.ServerError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
